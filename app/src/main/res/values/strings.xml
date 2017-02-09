@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Graduation</string>
+    <string name="activity_map_satellite">卫星地图</string>
+    <string name="activity_map_3d">3D地图</string>
+    <string name="activity_map_2d">2D地图</string>
+    <string name="activity_map_menu_tv">菜单</string>
+    <string name="activity_around_movie">附近影院</string>
+    <string name="activity_map_hot_movies">热门电影</string>
 </resources>
