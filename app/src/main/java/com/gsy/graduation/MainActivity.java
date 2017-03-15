@@ -18,6 +18,7 @@ import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.gsy.graduation.adapter.MenuListAdapter;
 import com.gsy.graduation.data.HotMovieData;
+import com.gsy.graduation.view.SwitchImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private View mMapShadowFl;
     private ListView mMMenuListView;
     private List<HotMovieData> mMovieList = new ArrayList<>();
-    private MenuListAdapter mMenuListAdapter;
+    private SwitchImageView mMenuSw1;
+    private SwitchImageView mMenuSw2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mTv2d.setOnClickListener(this);
         mMapMenuIv.setOnClickListener(this);
         mMapShadowFl.setOnClickListener(this);
+        mMenuSw1.setOnClickListener(this);
+        mMenuSw2.setOnClickListener(this);
     }
 
     private void initData() {
@@ -60,10 +64,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
         mBaiduMap.setTrafficEnabled(true);
-        mBaiduMap.setBaiduHeatMapEnabled(true);
 
-        mMenuListAdapter = new MenuListAdapter(this, mMovieList);
-        mMMenuListView.setAdapter(mMenuListAdapter);
+        MenuListAdapter menuListAdapter = new MenuListAdapter(this, mMovieList);
+        mMMenuListView.setAdapter(menuListAdapter);
 
 
         LatLng point = new LatLng(39.963175, 116.400244);
@@ -72,7 +75,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 .position(point)
                 .icon(bitmap);
 
+
         mBaiduMap.addOverlay(option);
+        setSwitch1();
+        setSwitch2();
+
     }
 
     private void initView() {
@@ -83,6 +90,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mMapMenuIv = findViewById(R.id.activity_map_menu_iv);
         mMapShadowFl = findViewById(R.id.activity_map_shadow_fl);
         mMMenuListView = (ListView) findViewById(R.id.activity_menu_list_view);
+        mMenuSw1 = (SwitchImageView) findViewById(R.id.activity_menu_sw1);
+        mMenuSw2 = (SwitchImageView) findViewById(R.id.activity_menu_sw2);
     }
 
     @Override
@@ -125,6 +134,30 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 .start();
     }
 
+    /**
+     * 设置第一个开关
+     */
+    private void setSwitch1() {
+        if (mMenuSw1.isChecked()) {
+            mMenuSw1.setImageResource(R.drawable.activity_menu_switch_on);
+            mBaiduMap.setBaiduHeatMapEnabled(true);
+        } else {
+            mMenuSw1.setImageResource(R.drawable.activity_menu_switch_off);
+            mBaiduMap.setBaiduHeatMapEnabled(false);
+        }
+    }
+
+    /**
+     * 设置第二个开关
+     */
+    private void setSwitch2() {
+        if (mMenuSw2.isChecked()) {
+            mMenuSw2.setImageResource(R.drawable.activity_menu_switch_on);
+        } else {
+            mMenuSw2.setImageResource(R.drawable.activity_menu_switch_off);
+        }
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -147,6 +180,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 setMenuVisibility(mMapShadowFl.getVisibility() != View.VISIBLE);
                 break;
 
+            case R.id.activity_menu_sw1:
+                mMenuSw1.setChecked(!mMenuSw1.isChecked());
+                setSwitch1();
+                break;
+
+            case R.id.activity_menu_sw2:
+                mMenuSw2.setChecked(!mMenuSw2.isChecked());
+                setSwitch2();
+                break;
+
             default:
                 break;
         }
@@ -155,8 +198,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void getMoviesData() {
         for (int i = 0; i < 50; i++) {
             HotMovieData hotMovieData = new HotMovieData();
-            hotMovieData.setName("第"+i+"部电影");
-            hotMovieData.setComment(i+" 分");
+            hotMovieData.setName("第" + i + "部电影");
+            hotMovieData.setComment(i + " 分");
             hotMovieData.setTime("2月14日22:00--24:00");
             mMovieList.add(hotMovieData);
         }
