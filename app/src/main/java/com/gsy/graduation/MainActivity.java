@@ -8,12 +8,18 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ListView;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatus;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MarkerOptions;
+import com.baidu.mapapi.map.MyLocationConfiguration;
+import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.gsy.graduation.adapter.MenuListAdapter;
@@ -37,6 +43,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private List<HotMovieData> mMovieList = new ArrayList<>();
     private SwitchImageView mMenuSw1;
     private SwitchImageView mMenuSw2;
+    private View mCurrentIndex;
+    private View mHotMap;
+    private View mRoot;
+    public MyLocationListenner myListener = new MyLocationListenner();
+    private MyLocationConfiguration.LocationMode mCurrentMode;
+    boolean isFirstLoc = true; // 是否首次定位
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +104,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mMMenuListView = (ListView) findViewById(R.id.activity_menu_list_view);
         mMenuSw1 = (SwitchImageView) findViewById(R.id.activity_menu_sw1);
         mMenuSw2 = (SwitchImageView) findViewById(R.id.activity_menu_sw2);
+        mCurrentIndex = findViewById(R.id.activity_main_current_index);
+        mHotMap = findViewById(R.id.activity_main_hot_map);
+        mRoot = findViewById(R.id.activity_main_root);
     }
 
     @Override
@@ -112,6 +127,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mMapView.onPause();
     }
 
+    /**
+     * 设置侧边栏的显示和隐藏
+     *
+     * @param visible true 显示，false 隐藏
+     */
     private void setMenuVisibility(final boolean visible) {
         mMapMenuLl.animate()
                 .translationX(visible ? 0 : getResources().getDimension(R.dimen.activity_menu_ll_width))
@@ -189,6 +209,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 mMenuSw2.setChecked(!mMenuSw2.isChecked());
                 setSwitch2();
                 break;
+            case R.id.activity_main_current_index:
+                break;
 
             default:
                 break;
@@ -202,6 +224,37 @@ public class MainActivity extends Activity implements View.OnClickListener {
             hotMovieData.setComment(i + " 分");
             hotMovieData.setTime("2月14日22:00--24:00");
             mMovieList.add(hotMovieData);
+        }
+    }
+
+    /**
+     * 定位SDK监听函数
+     */
+    public class MyLocationListenner implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+            // map view 销毁后不在处理新接收的位置
+            if (location == null || mMapView == null) {
+                return;
+            }
+            MyLocationData locData = new MyLocationData.Builder()
+                    .accuracy(location.getRadius())
+                    // 此处设置开发者获取到的方向信息，顺时针0-360
+                    .direction(100).latitude(location.getLatitude())
+                    .longitude(location.getLongitude()).build();
+            mBaiduMap.setMyLocationData(locData);
+            if (isFirstLoc) {
+                isFirstLoc = false;
+                LatLng ll = new LatLng(location.getLatitude(),
+                        location.getLongitude());
+                MapStatus.Builder builder = new MapStatus.Builder();
+                builder.target(ll).zoom(18.0f);
+                mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+            }
+        }
+
+        public void onReceivePoi(BDLocation poiLocation) {
         }
     }
 }
