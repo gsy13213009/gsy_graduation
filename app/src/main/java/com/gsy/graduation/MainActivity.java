@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -43,12 +44,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private List<HotMovieData> mMovieList = new ArrayList<>();
     private SwitchImageView mMenuSw1;
     private SwitchImageView mMenuSw2;
-    private View mCurrentIndex;
+    private TextView mCurrentIndex;
     private View mHotMap;
     private View mRoot;
     public MyLocationListenner myListener = new MyLocationListenner();
     private MyLocationConfiguration.LocationMode mCurrentMode;
     boolean isFirstLoc = true; // 是否首次定位
+    BitmapDescriptor mCurrentMarker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +94,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setSwitch1();
         setSwitch2();
 
+        mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
+
     }
 
     private void initView() {
@@ -104,9 +108,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mMMenuListView = (ListView) findViewById(R.id.activity_menu_list_view);
         mMenuSw1 = (SwitchImageView) findViewById(R.id.activity_menu_sw1);
         mMenuSw2 = (SwitchImageView) findViewById(R.id.activity_menu_sw2);
-        mCurrentIndex = findViewById(R.id.activity_main_current_index);
+        mCurrentIndex = (TextView) findViewById(R.id.activity_main_current_index);
         mHotMap = findViewById(R.id.activity_main_hot_map);
         mRoot = findViewById(R.id.activity_main_root);
+
+        mCurrentIndex.setOnClickListener(btnClickListener);
     }
 
     @Override
@@ -257,4 +263,33 @@ public class MainActivity extends Activity implements View.OnClickListener {
         public void onReceivePoi(BDLocation poiLocation) {
         }
     }
+
+    View.OnClickListener btnClickListener = new View.OnClickListener() {
+        public void onClick(View v) {
+            switch (mCurrentMode) {
+                case NORMAL:
+                    mCurrentIndex.setText("跟随");
+                    mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
+                    mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(
+                            mCurrentMode, true, mCurrentMarker));
+                    break;
+                case COMPASS:
+                    mCurrentIndex.setText("普通");
+                    mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
+                    mBaiduMap
+                            .setMyLocationConfigeration(new MyLocationConfiguration(
+                                    mCurrentMode, true, mCurrentMarker));
+                    break;
+                case FOLLOWING:
+                    mCurrentIndex.setText("罗盘");
+                    mCurrentMode = MyLocationConfiguration.LocationMode.COMPASS;
+                    mBaiduMap
+                            .setMyLocationConfigeration(new MyLocationConfiguration(
+                                    mCurrentMode, true, mCurrentMarker));
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 }

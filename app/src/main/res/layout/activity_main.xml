@@ -61,12 +61,13 @@
         android:layout_marginRight="20dp"
         android:orientation="horizontal">
 
-        <ImageView
+        <TextView
             android:id="@+id/activity_main_current_index"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/activity_map_current_index_pic"/>
+            android:gravity="center"
+            android:background="@drawable/activity_map_current_index_pic"/>
 
         <ImageView
             android:id="@+id/activity_main_hot_map"
