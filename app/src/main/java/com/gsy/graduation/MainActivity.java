@@ -7,22 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.mapapi.SDKInitializer;
-import com.baidu.mapapi.map.BaiduMap;
-import com.baidu.mapapi.map.BitmapDescriptor;
-import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.baidu.mapapi.map.MapStatus;
-import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.map.MarkerOptions;
-import com.baidu.mapapi.map.MyLocationConfiguration;
-import com.baidu.mapapi.map.MyLocationData;
-import com.baidu.mapapi.map.OverlayOptions;
-import com.baidu.mapapi.model.LatLng;
+import com.amap.api.maps.AMap;
+import com.amap.api.maps.MapView;
 import com.gsy.graduation.adapter.MenuListAdapter;
 import com.gsy.graduation.data.HotMovieData;
 import com.gsy.graduation.view.SwitchImageView;
@@ -33,8 +20,6 @@ import java.util.List;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private static final int DURATION_SHOW_MENU = 500;
-    MapView mMapView = null;
-    private BaiduMap mBaiduMap;
     private View mTvSatellite;
     private View mTv2d;
     private View mMapMenuLl;
@@ -44,22 +29,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private List<HotMovieData> mMovieList = new ArrayList<>();
     private SwitchImageView mMenuSw1;
     private SwitchImageView mMenuSw2;
-    private TextView mCurrentIndex;
-    private View mHotMap;
-    private View mRoot;
-    public MyLocationListenner myListener = new MyLocationListenner();
-    private MyLocationConfiguration.LocationMode mCurrentMode;
-    boolean isFirstLoc = true; // 是否首次定位
-    BitmapDescriptor mCurrentMarker;
+    private MapView mMapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_main);
         getMoviesData();
 
         initView();
+
+        mMapView.onCreate(savedInstanceState);
         initData();
         setOnclickListener();
     }
@@ -75,31 +55,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void initData() {
         mMapMenuLl.setTranslationX(getResources().getDimension(R.dimen.activity_menu_ll_width));
-        mBaiduMap = mMapView.getMap();
-        mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-        mBaiduMap.setTrafficEnabled(true);
 
         MenuListAdapter menuListAdapter = new MenuListAdapter(this, mMovieList);
         mMMenuListView.setAdapter(menuListAdapter);
-
-
-        LatLng point = new LatLng(39.963175, 116.400244);
-        BitmapDescriptor bitmap = BitmapDescriptorFactory.fromResource(R.drawable.icon_marka);
-        OverlayOptions option = new MarkerOptions()
-                .position(point)
-                .icon(bitmap);
-
-
-        mBaiduMap.addOverlay(option);
         setSwitch1();
         setSwitch2();
 
-        mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
-
+        if (mMapView != null) {
+            AMap aMap = mMapView.getMap();
+        }
     }
 
     private void initView() {
-        mMapView = (MapView) findViewById(R.id.bmapView);
+        mMapView = (MapView) findViewById(R.id.map);
         mTv2d = findViewById(R.id.activity_map_2d);
         mTvSatellite = findViewById(R.id.activity_map_satellite);
         mMapMenuLl = findViewById(R.id.activity_map_menu_ll);
@@ -108,11 +76,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         mMMenuListView = (ListView) findViewById(R.id.activity_menu_list_view);
         mMenuSw1 = (SwitchImageView) findViewById(R.id.activity_menu_sw1);
         mMenuSw2 = (SwitchImageView) findViewById(R.id.activity_menu_sw2);
-        mCurrentIndex = (TextView) findViewById(R.id.activity_main_current_index);
-        mHotMap = findViewById(R.id.activity_main_hot_map);
-        mRoot = findViewById(R.id.activity_main_root);
 
-        mCurrentIndex.setOnClickListener(btnClickListener);
     }
 
     @Override
@@ -131,6 +95,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onPause() {
         super.onPause();
         mMapView.onPause();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mMapView.onSaveInstanceState(outState);
     }
 
     /**
@@ -166,10 +136,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void setSwitch1() {
         if (mMenuSw1.isChecked()) {
             mMenuSw1.setImageResource(R.drawable.activity_menu_switch_on);
-            mBaiduMap.setBaiduHeatMapEnabled(true);
         } else {
             mMenuSw1.setImageResource(R.drawable.activity_menu_switch_off);
-            mBaiduMap.setBaiduHeatMapEnabled(false);
         }
     }
 
@@ -190,12 +158,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id.activity_map_satellite:
                 mTvSatellite.setBackgroundResource(R.drawable.activity_map_satellite_press_pc);
                 mTv2d.setBackgroundResource(R.drawable.activity_map_2d_normal_pc);
-                mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
                 break;
             case R.id.activity_map_2d:
                 mTvSatellite.setBackgroundResource(R.drawable.activity_map_satellite_normal_pc);
                 mTv2d.setBackgroundResource(R.drawable.activity_map_2d_press_pc);
-                mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
                 break;
 
             case R.id.activity_map_menu_iv:
@@ -233,63 +199,4 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
     }
 
-    /**
-     * 定位SDK监听函数
-     */
-    public class MyLocationListenner implements BDLocationListener {
-
-        @Override
-        public void onReceiveLocation(BDLocation location) {
-            // map view 销毁后不在处理新接收的位置
-            if (location == null || mMapView == null) {
-                return;
-            }
-            MyLocationData locData = new MyLocationData.Builder()
-                    .accuracy(location.getRadius())
-                    // 此处设置开发者获取到的方向信息，顺时针0-360
-                    .direction(100).latitude(location.getLatitude())
-                    .longitude(location.getLongitude()).build();
-            mBaiduMap.setMyLocationData(locData);
-            if (isFirstLoc) {
-                isFirstLoc = false;
-                LatLng ll = new LatLng(location.getLatitude(),
-                        location.getLongitude());
-                MapStatus.Builder builder = new MapStatus.Builder();
-                builder.target(ll).zoom(18.0f);
-                mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-            }
-        }
-
-        public void onReceivePoi(BDLocation poiLocation) {
-        }
-    }
-
-    View.OnClickListener btnClickListener = new View.OnClickListener() {
-        public void onClick(View v) {
-            switch (mCurrentMode) {
-                case NORMAL:
-                    mCurrentIndex.setText("跟随");
-                    mCurrentMode = MyLocationConfiguration.LocationMode.FOLLOWING;
-                    mBaiduMap.setMyLocationConfigeration(new MyLocationConfiguration(
-                            mCurrentMode, true, mCurrentMarker));
-                    break;
-                case COMPASS:
-                    mCurrentIndex.setText("普通");
-                    mCurrentMode = MyLocationConfiguration.LocationMode.NORMAL;
-                    mBaiduMap
-                            .setMyLocationConfigeration(new MyLocationConfiguration(
-                                    mCurrentMode, true, mCurrentMarker));
-                    break;
-                case FOLLOWING:
-                    mCurrentIndex.setText("罗盘");
-                    mCurrentMode = MyLocationConfiguration.LocationMode.COMPASS;
-                    mBaiduMap
-                            .setMyLocationConfigeration(new MyLocationConfiguration(
-                                    mCurrentMode, true, mCurrentMarker));
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
 }
