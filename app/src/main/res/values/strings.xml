@@ -5,5 +5,8 @@
     <string name="activity_map_2d">2D地图</string>
     <string name="activity_map_menu_tv">菜单</string>
     <string name="activity_around_movie">附近影院</string>
-    <string name="activity_map_hot_movies">热门电影</string>
+    <string name="activity_map_hot_movies">地图\n模式</string>
+    <string name="activity_map_standard">标准地图</string>
+    <string name="activity_map_night">夜间模式</string>
+    <string name="activity_map_navigate">导航模式</string>
 </resources>
