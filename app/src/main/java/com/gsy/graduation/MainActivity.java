@@ -29,6 +29,7 @@ import com.amap.api.services.poisearch.PoiSearch;
 import com.gsy.graduation.adapter.MenuListAdapter;
 import com.gsy.graduation.application.BaseApplication;
 import com.gsy.graduation.data.HotMovieData;
+import com.gsy.graduation.function.DriveRoute;
 import com.gsy.graduation.utils.DeviceUtils;
 import com.gsy.graduation.utils.ToastUtil;
 import com.gsy.graduation.view.SwitchImageView;
@@ -36,7 +37,8 @@ import com.gsy.graduation.view.SwitchImageView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity implements View.OnClickListener, PoiSearch.OnPoiSearchListener {
+public class MainActivity extends Activity implements View.OnClickListener, PoiSearch.OnPoiSearchListener
+        , AMap.OnMarkerClickListener {
 
     private static final int DURATION_SHOW_MENU = 300;
     private View mMapMenuLl;
@@ -90,6 +92,8 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         mMenuSw1.setOnClickListener(this);
         mMenuSw2.setOnClickListener(this);
         mMovieAround.setOnClickListener(this);
+
+        mAMap.setOnMarkerClickListener(this);
     }
 
     private void initData() {
@@ -360,18 +364,43 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                             && suggestionCities.size() > 0) {
                         showSuggestCity(suggestionCities);
                     } else {
-                        ToastUtil.show(MainActivity.this,
-                                R.string.no_result);
+                        ToastUtil.show(MainActivity.this, R.string.no_result);
                     }
                 }
             } else {
-                ToastUtil
-                        .show(MainActivity.this, R.string.no_result);
+                ToastUtil.show(MainActivity.this, R.string.no_result);
             }
         } else {
             ToastUtil.showerror(this.getApplicationContext(), rcode);
         }
     }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        if (marker.getObject() != null) {
+            try {
+                if (mlastMarker == null) {
+                    mlastMarker = marker;
+                } else {
+                    // 将之前被点击的marker置为原来的状态
+                    resetlastmarker();
+                    mlastMarker = marker;
+                }
+                marker.setIcon(BitmapDescriptorFactory.fromBitmap(
+                        BitmapFactory.decodeResource(getResources(), R.drawable.poi_marker_pressed)));
+                LatLonPoint start = new LatLonPoint(mAMap.getCameraPosition().target.latitude, mAMap.getCameraPosition().target.longitude);
+                LatLonPoint end = new LatLonPoint(marker.getPosition().latitude,marker.getPosition().longitude);
+                DriveRoute driveRoute = new DriveRoute(MainActivity.this, mAMap, start, end, mMapView);
+
+            } catch (Exception e) {
+                // TODO: handle exception
+            }
+        } else {
+            resetlastmarker();
+        }
+        return false;
+    }
+
 
     // 将之前被点击的marker置为原来的状态
     private void resetlastmarker() {
