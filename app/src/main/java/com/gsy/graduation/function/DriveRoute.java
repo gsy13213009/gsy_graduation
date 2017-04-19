@@ -2,7 +2,10 @@ package com.gsy.graduation.function;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMap.InfoWindowAdapter;
@@ -24,6 +27,7 @@ import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.RouteSearch.DriveRouteQuery;
 import com.amap.api.services.route.RouteSearch.OnRouteSearchListener;
 import com.amap.api.services.route.WalkRouteResult;
+import com.gsy.graduation.DriveRouteDetailActivity;
 import com.gsy.graduation.R;
 import com.gsy.graduation.overlay.DrivingRouteOverlay;
 import com.gsy.graduation.utils.AMapUtil;
@@ -44,8 +48,8 @@ public class DriveRoute implements OnMapClickListener,
 
     private final int ROUTE_TYPE_DRIVE = 2;
 
-//    private RelativeLayout mBottomLayout, mHeadLayout;
-//    private TextView mRotueTimeDes, mRouteDetailDes;
+    private RelativeLayout mBottomLayout;
+    private TextView mRotueTimeDes, mRouteDetailDes;
     private ProgressDialog progDialog = null;// 搜索时进度条
 
     public DriveRoute(Context context, AMap aMap, LatLonPoint startPoint, LatLonPoint endPoint, MapView mapView) {
@@ -79,7 +83,6 @@ public class DriveRoute implements OnMapClickListener,
         registerListener();
         mRouteSearch = new RouteSearch(mContext);
         mRouteSearch.setRouteSearchListener(this);
-//        mHeadLayout.setVisibility(View.GONE);
     }
 
     /**
@@ -168,25 +171,25 @@ public class DriveRoute implements OnMapClickListener,
                     drivingRouteOverlay.removeFromMap();
                     drivingRouteOverlay.addToMap();
                     drivingRouteOverlay.zoomToSpan();
-//                    mBottomLayout.setVisibility(View.VISIBLE);
+                    mBottomLayout.setVisibility(View.VISIBLE);
                     int dis = (int) drivePath.getDistance();
                     int dur = (int) drivePath.getDuration();
                     String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
-//                    mRotueTimeDes.setText(des);
-//                    mRouteDetailDes.setVisibility(View.VISIBLE);
+                    mRotueTimeDes.setText(des);
+                    mRouteDetailDes.setVisibility(View.VISIBLE);
                     int taxiCost = (int) mDriveRouteResult.getTaxiCost();
-//                    mRouteDetailDes.setText("打车约" + taxiCost + "元");
-//                    mBottomLayout.setOnClickListener(new OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//                            Intent intent = new Intent(mContext,
-//                                    DriveRouteDetailActivity.class);
-//                            intent.putExtra("drive_path", drivePath);
-//                            intent.putExtra("drive_result",
-//                                    mDriveRouteResult);
-//                            mContext.startActivity(intent);
-//                        }
-//                    });
+                    mRouteDetailDes.setText("打车约" + taxiCost + "元");
+                    mBottomLayout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(mContext,
+                                    DriveRouteDetailActivity.class);
+                            intent.putExtra("drive_path", drivePath);
+                            intent.putExtra("drive_result",
+                                    mDriveRouteResult);
+                            mContext.startActivity(intent);
+                        }
+                    });
 
                 } else if (result != null && result.getPaths() == null) {
                     ToastUtil.show(mContext, R.string.no_result);
@@ -236,20 +239,16 @@ public class DriveRoute implements OnMapClickListener,
 
     }
 
-//    public void setBottomLayout(RelativeLayout bottomLayout) {
-//        mBottomLayout = bottomLayout;
-//    }
-//
-//    public void setHeadLayout(RelativeLayout headLayout) {
-//        mHeadLayout = headLayout;
-//    }
-//
-//    public void setRotueTimeDes(TextView rotueTimeDes) {
-//        mRotueTimeDes = rotueTimeDes;
-//    }
-//
-//    public void setRouteDetailDes(TextView routeDetailDes) {
-//        mRouteDetailDes = routeDetailDes;
-//    }
+    public void setBottomLayout(RelativeLayout bottomLayout) {
+        mBottomLayout = bottomLayout;
+    }
+
+    public void setRotueTimeDes(TextView rotueTimeDes) {
+        mRotueTimeDes = rotueTimeDes;
+    }
+
+    public void setRouteDetailDes(TextView routeDetailDes) {
+        mRouteDetailDes = routeDetailDes;
+    }
 }
 

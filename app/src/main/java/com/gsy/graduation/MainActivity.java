@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
@@ -65,7 +66,10 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     //    private RelativeLayout mPoiDetail;
     private Marker mlastMarker;
     private myPoiOverlay poiOverlay;// poi图层
-    private LatLonPoint lp;// 116.472995,39.993743
+    private LatLonPoint lp;
+    private RelativeLayout mBottomLayout;
+    private TextView mRotueTimeDes;
+    private TextView mRouteDetailDes;
 
 
     @Override
@@ -124,6 +128,11 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         findViewById(R.id.activity_main_current_index).setOnClickListener(new LocationIndex());
 
         mMapModelLl.setTranslationY(-DeviceUtils.dip2px(100));
+
+        // 路径规划
+        mBottomLayout = (RelativeLayout) findViewById(R.id.bottom_layout);
+        mRotueTimeDes = (TextView) findViewById(R.id.firstline);
+        mRouteDetailDes = (TextView) findViewById(R.id.secondline);
 
     }
 
@@ -391,6 +400,9 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                 LatLonPoint start = new LatLonPoint(mAMap.getCameraPosition().target.latitude, mAMap.getCameraPosition().target.longitude);
                 LatLonPoint end = new LatLonPoint(marker.getPosition().latitude,marker.getPosition().longitude);
                 DriveRoute driveRoute = new DriveRoute(MainActivity.this, mAMap, start, end, mMapView);
+                driveRoute.setBottomLayout(mBottomLayout);
+                driveRoute.setRotueTimeDes(mRotueTimeDes);
+                driveRoute.setRouteDetailDes(mRouteDetailDes);
 
             } catch (Exception e) {
                 // TODO: handle exception
