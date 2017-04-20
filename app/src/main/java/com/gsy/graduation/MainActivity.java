@@ -102,6 +102,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     private LatLonPoint mEndPoint;
     private String mCurrentCityName = "北京";
     private View mSelectUp;
+    private View mCurrentIndex;
 
 
     @Override
@@ -129,6 +130,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         mMenuSw2.setOnClickListener(this);
         mMovieAround.setOnClickListener(this);
         mSelectUp.setOnClickListener(this);
+        mCurrentIndex.setOnClickListener(new LocationIndex());
 
         mAMap.setOnMarkerClickListener(this);
     }
@@ -161,7 +163,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         mMenuSw1 = (SwitchImageView) findViewById(R.id.activity_menu_sw1);
         mMenuSw2 = (SwitchImageView) findViewById(R.id.activity_menu_sw2);
         mMovieAround = findViewById(R.id.activity_map_movie_around);
-        findViewById(R.id.activity_main_current_index).setOnClickListener(new LocationIndex());
+        mCurrentIndex = findViewById(R.id.activity_main_current_index);
 
         // 路径规划
         mBottomLayout = (RelativeLayout) findViewById(R.id.bottom_layout);
@@ -549,6 +551,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         mBus.setImageResource(R.drawable.route_bus_select);
         mWalk.setImageResource(R.drawable.route_walk_normal);
         mMapView.setVisibility(View.GONE);
+        mCurrentIndex.setVisibility(View.GONE);
         mBusResultLayout.setVisibility(View.VISIBLE);
     }
 
@@ -561,6 +564,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         mBus.setImageResource(R.drawable.route_bus_normal);
         mWalk.setImageResource(R.drawable.route_walk_normal);
         mMapView.setVisibility(View.VISIBLE);
+        mCurrentIndex.setVisibility(View.VISIBLE);
         mBusResultLayout.setVisibility(View.GONE);
     }
 
@@ -573,6 +577,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         mBus.setImageResource(R.drawable.route_bus_normal);
         mWalk.setImageResource(R.drawable.route_walk_select);
         mMapView.setVisibility(View.VISIBLE);
+        mCurrentIndex.setVisibility(View.VISIBLE);
         mBusResultLayout.setVisibility(View.GONE);
     }
 
