@@ -78,7 +78,6 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     private int currentPage = 0;// 当前页面，从0开始计数
     private PoiResult poiResult; // poi返回的结果
     private List<PoiItem> poiItems;// poi数据
-    //    private RelativeLayout mPoiDetail;
     private Marker mlastMarker;
     private myPoiOverlay poiOverlay;// poi图层
     private LatLonPoint lp;
@@ -92,7 +91,6 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     private final int ROUTE_TYPE_BUS = 1;
     private final int ROUTE_TYPE_DRIVE = 2;
     private final int ROUTE_TYPE_WALK = 3;
-    private final int ROUTE_TYPE_CROSSTOWN = 4;
     private ProgressDialog mProgressDialog = null;// 搜索时进度条
     private RouteSearch mRouteSearch;
     private DriveRouteResult mDriveRouteResult;
@@ -483,7 +481,6 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                     BitmapFactory.decodeResource(getResources(), R.drawable.marker_other_highlight)));
         }
         mlastMarker = null;
-
     }
 
     /**
@@ -497,7 +494,6 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                     + cities.get(i).getAdCode() + "\n";
         }
         ToastUtil.show(this, infomation);
-
     }
 
     @Override

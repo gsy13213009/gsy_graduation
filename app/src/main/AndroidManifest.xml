@@ -38,6 +38,15 @@
         <activity
             android:name=".DriveRouteDetailActivity"
             android:screenOrientation="portrait" />
+        <!-- Route路径规划 -->
+        <activity
+            android:name=".WalkRouteDetailActivity"
+            android:screenOrientation="portrait" />
+        <!-- 公交路径规划 -->
+        <activity
+            android:name=".BusRouteDetailActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
