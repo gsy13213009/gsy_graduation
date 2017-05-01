@@ -47,8 +47,9 @@ import com.gsy.graduation.overlay.WalkRouteOverlay;
 import com.gsy.graduation.route.BusResultListAdapter;
 import com.gsy.graduation.utils.AMapUtil;
 import com.gsy.graduation.utils.DeviceUtils;
-import com.gsy.graduation.utils.ToastUtil;
+import com.gsy.graduation.utils.ToastUtils;
 import com.gsy.graduation.view.SwitchImageView;
+import com.gsy.graduation.view.myPoiOverlay;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -434,14 +435,14 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                             && suggestionCities.size() > 0) {
                         showSuggestCity(suggestionCities);
                     } else {
-                        ToastUtil.show(MainActivity.this, R.string.no_result);
+                        ToastUtils.show(MainActivity.this, R.string.no_result);
                     }
                 }
             } else {
-                ToastUtil.show(MainActivity.this, R.string.no_result);
+                ToastUtils.show(MainActivity.this, R.string.no_result);
             }
         } else {
-            ToastUtil.showerror(this.getApplicationContext(), rcode);
+            ToastUtils.showerror(this.getApplicationContext(), rcode);
         }
     }
 
@@ -495,7 +496,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                     + cities.get(i).getCityCode() + "城市编码:"
                     + cities.get(i).getAdCode() + "\n";
         }
-        ToastUtil.show(this, infomation);
+        ToastUtils.show(this, infomation);
     }
 
     @Override
@@ -586,11 +587,11 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
      */
     public void searchRouteResult(int routeType, int mode) {
         if (mStartPoint == null) {
-            ToastUtil.show(this, "起点未设置");
+            ToastUtils.show(this, "起点未设置");
             return;
         }
         if (mEndPoint == null) {
-            ToastUtil.show(this, "终点未设置");
+            ToastUtils.show(this, "终点未设置");
         }
         showProgressDialog();
         final RouteSearch.FromAndTo fromAndTo = new RouteSearch.FromAndTo(
@@ -637,13 +638,13 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                     BusResultListAdapter mBusResultListAdapter = new BusResultListAdapter(MainActivity.this, mBusRouteResult);
                     mBusResultList.setAdapter(mBusResultListAdapter);
                 } else if (result != null && result.getPaths() == null) {
-                    ToastUtil.show(MainActivity.this, R.string.no_result);
+                    ToastUtils.show(MainActivity.this, R.string.no_result);
                 }
             } else {
-                ToastUtil.show(MainActivity.this, R.string.no_result);
+                ToastUtils.show(MainActivity.this, R.string.no_result);
             }
         } else {
-            ToastUtil.showerror(this.getApplicationContext(), errorCode);
+            ToastUtils.showerror(this.getApplicationContext(), errorCode);
         }
     }
 
@@ -689,14 +690,14 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                         }
                     });
                 } else if (result != null && result.getPaths() == null) {
-                    ToastUtil.show(MainActivity.this, R.string.no_result);
+                    ToastUtils.show(MainActivity.this, R.string.no_result);
                 }
 
             } else {
-                ToastUtil.show(MainActivity.this, R.string.no_result);
+                ToastUtils.show(MainActivity.this, R.string.no_result);
             }
         } else {
-            ToastUtil.showerror(this.getApplicationContext(), errorCode);
+            ToastUtils.showerror(this.getApplicationContext(), errorCode);
         }
 
 
@@ -740,14 +741,14 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                         }
                     });
                 } else if (result != null && result.getPaths() == null) {
-                    ToastUtil.show(MainActivity.this, R.string.no_result);
+                    ToastUtils.show(MainActivity.this, R.string.no_result);
                 }
 
             } else {
-                ToastUtil.show(MainActivity.this, R.string.no_result);
+                ToastUtils.show(MainActivity.this, R.string.no_result);
             }
         } else {
-            ToastUtil.showerror(this.getApplicationContext(), errorCode);
+            ToastUtils.showerror(this.getApplicationContext(), errorCode);
         }
     }
 

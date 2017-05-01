@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.amap.api.services.core.AMapException;
 
-public class ToastUtil {
+public class ToastUtils {
 
 	public static void show(Context context, String info) {
 		Toast.makeText(context, info, Toast.LENGTH_LONG).show();

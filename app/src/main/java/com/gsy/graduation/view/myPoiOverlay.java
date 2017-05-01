@@ -1,4 +1,4 @@
-package com.gsy.graduation;
+package com.gsy.graduation.view;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -12,6 +12,7 @@ import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.services.core.PoiItem;
+import com.gsy.graduation.R;
 
 import java.util.ArrayList;
 import java.util.List;
