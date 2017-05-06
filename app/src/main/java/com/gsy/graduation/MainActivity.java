@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -26,10 +27,15 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
+import com.amap.api.maps.model.Poi;
 import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.core.SuggestionCity;
+import com.amap.api.services.district.DistrictItem;
+import com.amap.api.services.district.DistrictResult;
+import com.amap.api.services.district.DistrictSearch;
+import com.amap.api.services.district.DistrictSearchQuery;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.amap.api.services.route.BusRouteResult;
@@ -39,6 +45,8 @@ import com.amap.api.services.route.RideRouteResult;
 import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.WalkPath;
 import com.amap.api.services.route.WalkRouteResult;
+import com.google.gson.Gson;
+import com.gsy.graduation.adapter.DialogListAdapter;
 import com.gsy.graduation.adapter.MenuListAdapter;
 import com.gsy.graduation.application.BaseApplication;
 import com.gsy.graduation.data.HotMovieData;
@@ -50,19 +58,21 @@ import com.gsy.graduation.utils.DeviceUtils;
 import com.gsy.graduation.utils.ToastUtils;
 import com.gsy.graduation.view.SwitchImageView;
 import com.gsy.graduation.view.myPoiOverlay;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends Activity implements View.OnClickListener, PoiSearch.OnPoiSearchListener
-        , AMap.OnMarkerClickListener, RouteSearch.OnRouteSearchListener {
+        , AMap.OnMarkerClickListener, RouteSearch.OnRouteSearchListener, DistrictSearch.OnDistrictSearchListener
+        , AMap.OnPOIClickListener {
 
     private static final int DURATION_SHOW_MENU = 300;
     private View mMapMenuLl;
     private View mMapMenuIv;
     private View mMapShadowFl;
     private ListView mMMenuListView;
-    private List<HotMovieData> mMovieList = new ArrayList<>();
     private SwitchImageView mMenuSw1;
     private SwitchImageView mMenuSw2;
     private MapView mMapView;
@@ -104,6 +114,15 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     private String mCurrentCityName = "北京";
     private View mSelectUp;
     private View mCurrentIndex;
+    private HotMovieData mHotMovieDatas;
+    private int[] mMustClick = new int[3];
+    private boolean mHasMoved = false;
+    private ListView mMovieList;
+    private View mMovieDialog;
+    private ImageView mMovieImage;
+    private TextView mMovieDescribe;
+    private View mMovieShadow;
+    private Marker mCityMarker;
 
 
     @Override
@@ -134,13 +153,15 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         mCurrentIndex.setOnClickListener(new LocationIndex());
 
         mAMap.setOnMarkerClickListener(this);
+        mAMap.setOnPOIClickListener(this);
+        mMovieShadow.setOnClickListener(this);
     }
 
     private void initData() {
         mMapMenuLl.setTranslationX(getResources().getDimension(R.dimen.activity_menu_ll_width));
         mMapModelLl.setTranslationY(-DeviceUtils.dip2px(100));
         mSelectRoute.setTranslationY(-DeviceUtils.dip2px(100));
-        MenuListAdapter menuListAdapter = new MenuListAdapter(this, mMovieList);
+        MenuListAdapter menuListAdapter = new MenuListAdapter(this, mHotMovieDatas);
         mMMenuListView.setAdapter(menuListAdapter);
         setSwitch1();
         setSwitch2();
@@ -174,11 +195,19 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         // 选择路线按钮
         mSelectRoute = findViewById(R.id.activity_main_select_route);
         mSelectUp = findViewById(R.id.activity_main_route_up);
-        mDrive = (ImageView)findViewById(R.id.route_drive);
-        mBus = (ImageView)findViewById(R.id.route_bus);
-        mWalk = (ImageView)findViewById(R.id.route_walk);
+        mDrive = (ImageView) findViewById(R.id.route_drive);
+        mBus = (ImageView) findViewById(R.id.route_bus);
+        mWalk = (ImageView) findViewById(R.id.route_walk);
         mBusResultLayout = (LinearLayout) findViewById(R.id.bus_result);
         mBusResultList = (ListView) findViewById(R.id.bus_result_list);
+
+        // 每个地区的视频信息
+        mMovieList = (ListView) findViewById(R.id.activity_main_movie_list);
+        mMovieDialog = findViewById(R.id.activity_main_movie_dialog);
+        mMovieImage = (ImageView) findViewById(R.id.activity_main_movie_iv);
+        mMovieDescribe = (TextView) findViewById(R.id.activity_main_movie_describe);
+        mMovieShadow = findViewById(R.id.activity_main_movie_shadow);
+        mMovieDialog.setVisibility(View.GONE);
     }
 
     @Override
@@ -291,8 +320,33 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     private void setSwitch2() {
         if (mMenuSw2.isChecked()) {
             mMenuSw2.setImageResource(R.drawable.activity_menu_switch_on);
+            for (HotMovieData.DataBean dataBean : mHotMovieDatas.data) {
+                DistrictSearch search = new DistrictSearch(getApplicationContext());
+                DistrictSearchQuery query = new DistrictSearchQuery();
+                query.setKeywords(dataBean.address_city);
+                query.setShowBoundary(true);
+                query.setKeywordsLevel("country");
+                search.setQuery(query);
+                search.setOnDistrictSearchListener(this);
+                search.searchDistrictAsyn();
+            }
         } else {
             mMenuSw2.setImageResource(R.drawable.activity_menu_switch_off);
+            mHasMoved = false;
+            mAMap.clear();
+        }
+    }
+
+    /**
+     * 设置每个地区视频详情对话框是否显示
+     */
+    private void setMovieDialogVisibility(boolean visible) {
+        if (visible) {
+            mMovieDialog.setVisibility(View.VISIBLE);
+            mMovieShadow.setVisibility(View.VISIBLE);
+        } else {
+            if (mMovieDialog.isShown()) mMovieDialog.setVisibility(View.GONE);
+            mMovieShadow.setVisibility(View.GONE);
         }
     }
 
@@ -348,8 +402,6 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                 mMenuSw2.setChecked(!mMenuSw2.isChecked());
                 setSwitch2();
                 break;
-            case R.id.activity_main_current_index:
-                break;
 
             case R.id.activity_main_map_model:
                 setMapModelVisibility(mMapShadowFl.getVisibility() != View.VISIBLE);
@@ -361,6 +413,10 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
 
             case R.id.activity_main_route_up:
                 setSelectRouteVisibility(false);
+                break;
+
+            case R.id.activity_main_movie_shadow:
+                setMovieDialogVisibility(false);
                 break;
 
             default:
@@ -385,12 +441,12 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     }
 
     public void getMoviesData() {
-        for (int i = 0; i < 50; i++) {
-            HotMovieData hotMovieData = new HotMovieData();
-            hotMovieData.setName("第" + i + "部电影");
-            hotMovieData.setComment(i + " 分");
-            hotMovieData.setTime("2月14日22:00--24:00");
-            mMovieList.add(hotMovieData);
+        mHotMovieDatas = new Gson().fromJson(HotMovieData.movie_data, HotMovieData.class);
+        Collections.sort(mHotMovieDatas.data);
+        for (int i = 0; i < 3; i++) {
+            for (HotMovieData.DataBean.MovieBean movieBean : mHotMovieDatas.data.get(i).movie) {
+                mMustClick[i] = Integer.parseInt(movieBean.click_value) > mMustClick[i] ? Integer.parseInt(movieBean.click_value) : mMustClick[i];
+            }
         }
     }
 
@@ -459,7 +515,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                 }
                 marker.setIcon(BitmapDescriptorFactory.fromBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.poi_marker_pressed)));
-                mEndPoint = new LatLonPoint(marker.getPosition().latitude,marker.getPosition().longitude);
+                mEndPoint = new LatLonPoint(marker.getPosition().latitude, marker.getPosition().longitude);
                 setSelectRouteVisibility(true);
             } catch (Exception e) {
                 // TODO: handle exception
@@ -504,6 +560,98 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
 
     }
 
+    @Override
+    public void onDistrictSearched(DistrictResult districtResult) {
+        if (districtResult == null || districtResult.getDistrict() == null) {
+            return;
+        }
+        //通过ErrorCode判断是否成功
+        if (districtResult.getAMapException() != null && districtResult.getAMapException().getErrorCode() == AMapException.CODE_AMAP_SUCCESS) {
+            final DistrictItem item = districtResult.getDistrict().get(0);
+            if (item == null) {
+                return;
+            }
+            LatLonPoint centerLatLng = item.getCenter();
+            int index = -1;
+            for (int i = 0; i < mHotMovieDatas.data.size(); i++) {
+                if (item.getName().contains(mHotMovieDatas.data.get(i).address_city)) {
+                    index = i;
+                    break;
+                }
+            }
+            if (centerLatLng != null && !mHasMoved) {
+                mHasMoved = true;
+                mAMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(34.757975, 113.665412), 5));
+            }
+            if (index != -1) {
+                int clickMust = 0;
+                for (HotMovieData.DataBean.MovieBean movie : mHotMovieDatas.data.get(index).movie) {
+                    clickMust = Integer.parseInt(movie.click_value) > clickMust ? Integer.parseInt(movie.click_value) : clickMust;
+                }
+                int color = Color.parseColor("#50888888");
+                if (clickMust > 400) {
+                    color = Color.parseColor("#50FF0000");
+                } else if (clickMust > 360) {
+                    color = Color.parseColor("#5000FF00");
+                } else if (clickMust > 200) {
+                    color = Color.parseColor("#500000FF");
+                }
+                LatLng latLng = new LatLng(centerLatLng.getLatitude(), centerLatLng.getLongitude());
+                mAMap.addCircle(new CircleOptions().center(latLng)
+                        .radius(40000).strokeColor(color)
+                        .fillColor(color).strokeWidth(25));
+            }
+        } else {
+            if (districtResult.getAMapException() != null)
+                ToastUtils.showerror(this.getApplicationContext(), districtResult.getAMapException().getErrorCode());
+        }
+
+    }
+
+    @Override
+    public void onPOIClick(Poi poi) {
+        boolean clickedIsWant = false;
+        int clickIndex = -1;
+        for (int i = 0; i < mHotMovieDatas.data.size(); i++) {
+            if (mHotMovieDatas.data.get(i).address_city.contains(poi.getName())) {
+                clickedIsWant = true;
+                clickIndex = i;
+                break;
+            }
+        }
+        if (clickedIsWant) {
+            setMovieDialogVisibility(true);
+            if (mCityMarker != null) mCityMarker.remove();
+            Marker marker = mAMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory
+                    .defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+                    .position(poi.getCoordinate())
+                    .title(poi.getName())
+                    .snippet("详细信息")
+                    .draggable(true));
+            mCityMarker = marker;
+            mAMap.moveCamera(CameraUpdateFactory.newLatLngZoom(poi.getCoordinate(), 5));
+            setMovieData(clickIndex);
+            ToastUtils.show(MainActivity.this, "点击了" + clickIndex + "地区 " + mHotMovieDatas.data.get(clickIndex).address_city);
+        }
+    }
+
+    private void setMovieData(final int index) {
+        DialogListAdapter adapter = new DialogListAdapter(this, mHotMovieDatas.data.get(index));
+        mMovieList.setAdapter(adapter);
+        if (!ImageLoader.getInstance().isInited()) {
+            ImageLoader.getInstance().init(new ImageLoaderConfiguration.Builder(MainActivity.this).build());
+        }
+        ImageLoader.getInstance().displayImage(mHotMovieDatas.data.get(index).movie.get(0).pic_url, mMovieImage);
+        mMovieDescribe.setText(mHotMovieDatas.data.get(index).movie.get(0).describe);
+        mMovieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ImageLoader.getInstance().displayImage(mHotMovieDatas.data.get(index).movie.get(position).pic_url, mMovieImage);
+                mMovieDescribe.setText(mHotMovieDatas.data.get(index).movie.get(position).describe);
+            }
+        });
+    }
+
     private class LocationIndex implements View.OnClickListener {
         final int PLANE_MAP = 0;
         final int SLOPING_MAP = 1;
@@ -539,7 +687,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
             mAMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
             mAMap.moveCamera(CameraUpdateFactory.zoomTo(zoomLevel));
             mStartPoint = new LatLonPoint(mAMap.getCameraPosition().target.latitude, mAMap.getCameraPosition().target.longitude);
-            Log.d("gsy", "["  + "] " + "startPoint:"+mStartPoint.getLatitude()+ "  "+mStartPoint.getLongitude());
+            Log.d("gsy", "[" + "] " + "startPoint:" + mStartPoint.getLatitude() + "  " + mStartPoint.getLongitude());
         }
     }
 
@@ -673,11 +821,11 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                     mBottomLayout.setVisibility(View.VISIBLE);
                     int dis = (int) drivePath.getDistance();
                     int dur = (int) drivePath.getDuration();
-                    String des = AMapUtil.getFriendlyTime(dur)+"("+AMapUtil.getFriendlyLength(dis)+")";
+                    String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
                     mRotueTimeDes.setText(des);
                     mRouteDetailDes.setVisibility(View.VISIBLE);
                     int taxiCost = (int) mDriveRouteResult.getTaxiCost();
-                    mRouteDetailDes.setText("打车约"+taxiCost+"元");
+                    mRouteDetailDes.setText("打车约" + taxiCost + "元");
                     mBottomLayout.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -726,7 +874,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                     mBottomLayout.setVisibility(View.VISIBLE);
                     int dis = (int) walkPath.getDistance();
                     int dur = (int) walkPath.getDuration();
-                    String des = AMapUtil.getFriendlyTime(dur)+"("+AMapUtil.getFriendlyLength(dis)+")";
+                    String des = AMapUtil.getFriendlyTime(dur) + "(" + AMapUtil.getFriendlyLength(dis) + ")";
                     mRotueTimeDes.setText(des);
                     mRouteDetailDes.setVisibility(View.GONE);
                     mBottomLayout.setOnClickListener(new View.OnClickListener() {
@@ -764,5 +912,13 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         if (mProgressDialog != null) {
             mProgressDialog.dismiss();
         }
+    }
+
+    public void onClipNameClick(View view) {
+
+    }
+
+    public void onOpenBaiduClick(View view) {
+
     }
 }

@@ -10,28 +10,26 @@ import android.widget.TextView;
 import com.gsy.graduation.R;
 import com.gsy.graduation.data.HotMovieData;
 
-import java.util.List;
-
 /**
  *
  */
 public class MenuListAdapter extends BaseAdapter {
-    private List<HotMovieData> mMovieList;
     private Context mContext;
+    private HotMovieData mHotMovieData;
 
-    public MenuListAdapter(Context context, List<HotMovieData> movieList) {
+    public MenuListAdapter(Context context, HotMovieData movie) {
         this.mContext = context;
-        this.mMovieList = movieList;
+        this.mHotMovieData = movie;
     }
 
     @Override
     public int getCount() {
-        return mMovieList.size();
+        return mHotMovieData.data.size();
     }
 
     @Override
-    public HotMovieData getItem(int position) {
-        return mMovieList.get(position);
+    public HotMovieData.DataBean getItem(int position) {
+        return mHotMovieData.data.get(position);
     }
 
     @Override
@@ -57,27 +55,32 @@ public class MenuListAdapter extends BaseAdapter {
     private static class MenuViewHolder {
         private TextView movieName;
         private TextView movieComment;
-
-        private HotMovieData mHotMovieData;
+        private TextView movieAddress;
 
         /**
          * viewHolder的构造方法，初始化view
-         *
-         * @param view
          */
         public MenuViewHolder(View view) {
             movieName = (TextView) view.findViewById(R.id.menu_list_movie_name);
             movieComment = (TextView) view.findViewById(R.id.menu_list_movie_comment);
+            movieAddress = (TextView) view.findViewById(R.id.menu_list_movie_address);
         }
 
         /**
          * 处理item的相关逻辑
-         *
-         * @param hotMovieData
          */
-        public void updateViewHolder(HotMovieData hotMovieData) {
-            movieName.setText(hotMovieData.getName());
-            movieComment.setText(hotMovieData.getComment());
+        public void updateViewHolder(HotMovieData.DataBean moviData) {
+            HotMovieData.DataBean.MovieBean selcetMovieBean = null;
+            for (HotMovieData.DataBean.MovieBean movieBean : moviData.movie) {
+                if (selcetMovieBean == null) {
+                    selcetMovieBean = movieBean;
+                } else {
+                    selcetMovieBean = Integer.parseInt(movieBean.click_value) > Integer.parseInt(selcetMovieBean.click_value) ? movieBean : selcetMovieBean;
+                }
+            }
+            movieName.setText(selcetMovieBean != null ? selcetMovieBean.name : null);
+            movieComment.setText((selcetMovieBean != null ? selcetMovieBean.click_value : null));
+            movieAddress.setText(moviData.address);
         }
     }
 
