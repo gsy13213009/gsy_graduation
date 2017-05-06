@@ -22,12 +22,12 @@ import java.util.List;
  *
  */
 
-public class myPoiOverlay {
+public class MyPoiOverlay {
     private AMap mamap;
     private List<PoiItem> mPois;
     private ArrayList<Marker> mPoiMarks = new ArrayList<Marker>();
     private Context mContext;
-    public myPoiOverlay(AMap amap ,List<PoiItem> pois, Context context) {
+    public MyPoiOverlay(AMap amap , List<PoiItem> pois, Context context) {
         mamap = amap;
         mPois = pois;
         mContext = context;

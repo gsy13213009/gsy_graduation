@@ -1,4 +1,4 @@
-package com.gsy.graduation;
+package com.gsy.graduation.activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -46,18 +46,18 @@ import com.amap.api.services.route.RouteSearch;
 import com.amap.api.services.route.WalkPath;
 import com.amap.api.services.route.WalkRouteResult;
 import com.google.gson.Gson;
+import com.gsy.graduation.R;
 import com.gsy.graduation.adapter.DialogListAdapter;
 import com.gsy.graduation.adapter.MenuListAdapter;
-import com.gsy.graduation.application.BaseApplication;
 import com.gsy.graduation.data.HotMovieData;
 import com.gsy.graduation.overlay.DrivingRouteOverlay;
 import com.gsy.graduation.overlay.WalkRouteOverlay;
-import com.gsy.graduation.route.BusResultListAdapter;
+import com.gsy.graduation.adapter.BusResultListAdapter;
 import com.gsy.graduation.utils.AMapUtil;
 import com.gsy.graduation.utils.DeviceUtils;
 import com.gsy.graduation.utils.ToastUtils;
 import com.gsy.graduation.view.SwitchImageView;
-import com.gsy.graduation.view.myPoiOverlay;
+import com.gsy.graduation.view.MyPoiOverlay;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -90,7 +90,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     private PoiResult poiResult; // poi返回的结果
     private List<PoiItem> poiItems;// poi数据
     private Marker mlastMarker;
-    private myPoiOverlay poiOverlay;// poi图层
+    private MyPoiOverlay poiOverlay;// poi图层
     private LatLonPoint lp;
     private RelativeLayout mBottomLayout;
     private TextView mRotueTimeDes;
@@ -128,7 +128,6 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BaseApplication.setApplication(getApplication());
         setContentView(R.layout.activity_main);
         getMoviesData();
         initView();
@@ -469,7 +468,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                             poiOverlay.removeFromMap();
                         }
                         mAMap.clear();
-                        poiOverlay = new myPoiOverlay(mAMap, poiItems, MainActivity.this);
+                        poiOverlay = new MyPoiOverlay(mAMap, poiItems, MainActivity.this);
                         poiOverlay.addToMap();
                         poiOverlay.zoomToSpan();
 

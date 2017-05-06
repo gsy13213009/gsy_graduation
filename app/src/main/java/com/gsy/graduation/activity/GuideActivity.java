@@ -1,4 +1,4 @@
-package com.gsy.graduation;
+package com.gsy.graduation.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 
+import com.gsy.graduation.R;
 import com.gsy.graduation.utils.DeviceUtils;
 import com.gsy.graduation.utils.MyConstants;
 import com.gsy.graduation.utils.SpUtils;

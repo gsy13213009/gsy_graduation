@@ -1,4 +1,4 @@
-package com.gsy.graduation;
+package com.gsy.graduation.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,13 +24,18 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gsy.graduation.R;
+import com.gsy.graduation.application.BaseApplication;
 import com.gsy.graduation.data.UrlBean;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -57,6 +62,7 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        BaseApplication.setApplication(getApplication());
         // 初始化界面
         initView();
         // 初始化数据
@@ -381,7 +387,7 @@ public class SplashActivity extends Activity {
      * 初始化界面
      */
     private void initView() {
-        setContentView(R.layout.splash_activity);
+        setContentView(R.layout.activity_splash);
         rl_root = (RelativeLayout) findViewById(R.id.rl_splash_root);
         tv_versionName = (TextView) findViewById(R.id.tv_splash_version_name);
         pb_download = (ProgressBar) findViewById(R.id.pb_splash_download_progress);

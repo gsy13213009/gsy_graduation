@@ -1,4 +1,4 @@
-package com.gsy.graduation.route;
+package com.gsy.graduation.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.amap.api.services.route.BusPath;
 import com.amap.api.services.route.BusRouteResult;
-import com.gsy.graduation.BusRouteDetailActivity;
+import com.gsy.graduation.activity.BusRouteDetailActivity;
 import com.gsy.graduation.R;
 import com.gsy.graduation.utils.AMapUtil;
 

@@ -1,4 +1,4 @@
-package com.gsy.graduation;
+package com.gsy.graduation.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.amap.api.services.route.WalkPath;
-import com.gsy.graduation.route.WalkSegmentListAdapter;
+import com.gsy.graduation.R;
+import com.gsy.graduation.adapter.WalkSegmentListAdapter;
 import com.gsy.graduation.utils.AMapUtil;
 
 public class WalkRouteDetailActivity extends Activity {

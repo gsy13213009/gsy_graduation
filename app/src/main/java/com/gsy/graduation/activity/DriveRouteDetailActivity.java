@@ -1,4 +1,4 @@
-package com.gsy.graduation;
+package com.gsy.graduation.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +12,8 @@ import com.amap.api.services.route.DrivePath;
 import com.amap.api.services.route.DriveRouteResult;
 import com.amap.api.services.route.DriveStep;
 import com.amap.api.services.route.TMC;
-import com.gsy.graduation.route.DriveSegmentListAdapter;
+import com.gsy.graduation.R;
+import com.gsy.graduation.adapter.DriveSegmentListAdapter;
 import com.gsy.graduation.utils.AMapUtil;
 
 import java.util.List;

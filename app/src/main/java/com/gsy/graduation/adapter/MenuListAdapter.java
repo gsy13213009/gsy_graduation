@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gsy.graduation.R;
 import com.gsy.graduation.data.HotMovieData;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 /**
  *
@@ -20,6 +23,9 @@ public class MenuListAdapter extends BaseAdapter {
     public MenuListAdapter(Context context, HotMovieData movie) {
         this.mContext = context;
         this.mHotMovieData = movie;
+        if (!ImageLoader.getInstance().isInited()) {
+            ImageLoader.getInstance().init(new ImageLoaderConfiguration.Builder(context).build());
+        }
     }
 
     @Override
@@ -41,7 +47,7 @@ public class MenuListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final MenuViewHolder holder;
         if (null == convertView) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.movie_hot_list_item, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_movie_hot_list, parent, false);
             holder = new MenuViewHolder(convertView);
             convertView.setTag(holder);
         } else {
@@ -56,11 +62,12 @@ public class MenuListAdapter extends BaseAdapter {
         private TextView movieName;
         private TextView movieComment;
         private TextView movieAddress;
-
+        private ImageView mImageView;
         /**
          * viewHolder的构造方法，初始化view
          */
-        public MenuViewHolder(View view) {
+        MenuViewHolder(View view) {
+            mImageView = (ImageView) view.findViewById(R.id.menu_list_movie_ic);
             movieName = (TextView) view.findViewById(R.id.menu_list_movie_name);
             movieComment = (TextView) view.findViewById(R.id.menu_list_movie_comment);
             movieAddress = (TextView) view.findViewById(R.id.menu_list_movie_address);
@@ -69,7 +76,7 @@ public class MenuListAdapter extends BaseAdapter {
         /**
          * 处理item的相关逻辑
          */
-        public void updateViewHolder(HotMovieData.DataBean moviData) {
+        void updateViewHolder(HotMovieData.DataBean moviData) {
             HotMovieData.DataBean.MovieBean selcetMovieBean = null;
             for (HotMovieData.DataBean.MovieBean movieBean : moviData.movie) {
                 if (selcetMovieBean == null) {
@@ -78,6 +85,7 @@ public class MenuListAdapter extends BaseAdapter {
                     selcetMovieBean = Integer.parseInt(movieBean.click_value) > Integer.parseInt(selcetMovieBean.click_value) ? movieBean : selcetMovieBean;
                 }
             }
+            ImageLoader.getInstance().displayImage(selcetMovieBean != null ? selcetMovieBean.pic_url : null,mImageView);
             movieName.setText(selcetMovieBean != null ? selcetMovieBean.name : null);
             movieComment.setText((selcetMovieBean != null ? selcetMovieBean.click_value : null));
             movieAddress.setText(moviData.address);

@@ -1,4 +1,4 @@
-package com.gsy.graduation.route;
+package com.gsy.graduation.data;
 
 import com.amap.api.services.route.BusStep;
 

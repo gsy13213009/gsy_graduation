@@ -27,22 +27,22 @@
             android:name="com.amap.api.v2.apikey"
             android:value="fd8f7da29a73501df468bee0c6bcc2e0" />
 
-        <activity android:name=".MainActivity" />
+        <activity android:name=".activity.MainActivity" />
         <!-- 路径规划详情 -->
         <activity
-            android:name=".DriveRouteDetailActivity"
+            android:name=".activity.DriveRouteDetailActivity"
             android:screenOrientation="portrait" />
         <!-- Route路径规划 -->
         <activity
-            android:name=".WalkRouteDetailActivity"
+            android:name=".activity.WalkRouteDetailActivity"
             android:screenOrientation="portrait" />
         <!-- 公交路径规划 -->
         <activity
-            android:name=".BusRouteDetailActivity"
+            android:name=".activity.BusRouteDetailActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:screenOrientation="portrait" >
 
         <intent-filter>
@@ -53,7 +53,7 @@
         </activity>
 
         <activity
-            android:name=".GuideActivity"
+            android:name=".activity.GuideActivity"
             android:screenOrientation="portrait" />
 
     </application>

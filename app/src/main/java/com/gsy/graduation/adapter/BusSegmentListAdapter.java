@@ -1,4 +1,4 @@
-package com.gsy.graduation.route;
+package com.gsy.graduation.adapter;
 
 import android.content.Context;
 import android.view.View;
@@ -14,6 +14,7 @@ import com.amap.api.services.busline.BusStationItem;
 import com.amap.api.services.route.BusStep;
 import com.amap.api.services.route.RailwayStationItem;
 import com.gsy.graduation.R;
+import com.gsy.graduation.data.SchemeBusStep;
 
 import java.util.ArrayList;
 import java.util.List;

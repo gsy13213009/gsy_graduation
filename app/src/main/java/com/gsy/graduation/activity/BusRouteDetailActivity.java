@@ -1,4 +1,4 @@
-package com.gsy.graduation;
+package com.gsy.graduation.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,8 +19,9 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.services.route.BusPath;
 import com.amap.api.services.route.BusRouteResult;
+import com.gsy.graduation.R;
 import com.gsy.graduation.overlay.BusRouteOverlay;
-import com.gsy.graduation.route.BusSegmentListAdapter;
+import com.gsy.graduation.adapter.BusSegmentListAdapter;
 import com.gsy.graduation.utils.AMapUtil;
 
 public class BusRouteDetailActivity extends Activity implements OnMapLoadedListener,
