@@ -34,4 +34,6 @@
     <color name="translucent">#66000000</color>
     <color name="color666">#661B85FF</color>
     <color name="color_1B85FF">#1B85FF</color>
+    <color name="btn_press">#d9ed3f</color>
+    <color name="btn_normal">#3483f9</color>
 </resources>

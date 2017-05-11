@@ -18,9 +18,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/main_activity_map_mode"
+        android:background="@drawable/btn_map_model"
         android:gravity="center"
-        android:text="@string/activity_map_hot_movies"
         android:textColor="@color/activity_map_text"
         android:textSize="10sp" />
 
@@ -32,10 +31,8 @@
         android:layout_below="@id/activity_main_map_model"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:text="@string/activity_around_movie"
-        android:textColor="@color/activity_map_text"
-        android:textSize="10sp" />
+        android:background="@drawable/btn_movie_arround"
+        android:gravity="center" />
 
     <TextView
         android:id="@+id/activity_map_menu_iv"
@@ -45,9 +42,8 @@
         android:layout_below="@id/activity_map_movie_around"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
-        android:background="@drawable/activity_map_menu_pic"
+        android:background="@drawable/btn_menu"
         android:gravity="center"
-        android:text="@string/activity_map_menu_tv"
         android:textColor="@color/black"
         android:textSize="10dp" />
 
@@ -71,10 +67,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:background="@drawable/main_activity_position_ic"
+                android:background="@drawable/btn_current_index"
                 android:gravity="center"
                 android:text="定位"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="11dp" />
 
         </FrameLayout>
@@ -84,7 +80,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/activity_map_hot_map_pic"
             android:visibility="invisible" />
 
         <ImageView
@@ -92,7 +87,6 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@drawable/activity_map_root_pic"
             android:visibility="invisible" />
 
     </LinearLayout>
@@ -131,14 +125,14 @@
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:background="@color/blue" />
+                    android:background="@drawable/traffic_hot_map" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
-                    android:text="热力图" />
+                    android:text="交通热力图" />
 
                 <com.gsy.graduation.view.SwitchImageView
                     android:id="@+id/activity_menu_sw1"
@@ -160,14 +154,14 @@
                     android:layout_width="30dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
-                    android:background="@color/blue" />
+                    android:background="@drawable/movie_hot_map" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
-                    android:text="热力图" />
+                    android:text="视频热力图" />
 
                 <com.gsy.graduation.view.SwitchImageView
                     android:id="@+id/activity_menu_sw2"
@@ -487,10 +481,10 @@
     <LinearLayout
         android:id="@+id/activity_main_movie_dialog"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
-        tools:visibility="visible"
-        android:layout_height="wrap_content">
+        tools:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -512,45 +506,45 @@
                 android:layout_weight="1"
                 android:background="@color/white" />
         </LinearLayout>
-        
+
         <ListView
             android:id="@+id/activity_main_movie_list"
             android:layout_width="match_parent"
+            android:layout_height="100dp"
             android:layout_marginLeft="10dp"
-            android:background="@color/white"
             android:layout_marginRight="10dp"
-            android:layout_height="100dp" />
+            android:background="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_height="wrap_content">
+            android:layout_marginRight="10dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
-                android:text="复制名字"
+                android:background="@drawable/btn_selector"
                 android:gravity="center"
                 android:onClick="onClipNameClick"
-                android:textColor="@color/black"
-                android:background="@color/white" />
+                android:text="复制名字"
+                android:textColor="@color/black" />
 
             <View
                 android:layout_width="2dp"
-                android:background="@color/gary"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/gary" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="1"
+                android:background="@drawable/btn_selector"
+                android:gravity="center"
                 android:onClick="onOpenBaiduClick"
                 android:text="复制并打开百度糯米"
-                android:gravity="center"
-                android:textColor="@color/black"
-                android:background="@color/white" />
+                android:textColor="@color/black" />
 
         </LinearLayout>
 
