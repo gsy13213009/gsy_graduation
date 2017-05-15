@@ -4,10 +4,17 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.ClipboardManager;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -47,17 +54,17 @@ import com.amap.api.services.route.WalkPath;
 import com.amap.api.services.route.WalkRouteResult;
 import com.google.gson.Gson;
 import com.gsy.graduation.R;
+import com.gsy.graduation.adapter.BusResultListAdapter;
 import com.gsy.graduation.adapter.DialogListAdapter;
 import com.gsy.graduation.adapter.MenuListAdapter;
 import com.gsy.graduation.data.HotMovieData;
 import com.gsy.graduation.overlay.DrivingRouteOverlay;
 import com.gsy.graduation.overlay.WalkRouteOverlay;
-import com.gsy.graduation.adapter.BusResultListAdapter;
 import com.gsy.graduation.utils.AMapUtil;
 import com.gsy.graduation.utils.DeviceUtils;
 import com.gsy.graduation.utils.ToastUtils;
-import com.gsy.graduation.view.SwitchImageView;
 import com.gsy.graduation.view.MyPoiOverlay;
+import com.gsy.graduation.view.SwitchImageView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -123,6 +130,8 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     private TextView mMovieDescribe;
     private View mMovieShadow;
     private Marker mCityMarker;
+    private String mMovieName;
+    private DialogListAdapter mAdapter;
 
 
     @Override
@@ -207,6 +216,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         mMovieDescribe = (TextView) findViewById(R.id.activity_main_movie_describe);
         mMovieShadow = findViewById(R.id.activity_main_movie_shadow);
         mMovieDialog.setVisibility(View.GONE);
+        mMovieDialog.setOnClickListener(null);
     }
 
     @Override
@@ -440,7 +450,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     }
 
     public void getMoviesData() {
-        mHotMovieDatas = new Gson().fromJson(HotMovieData.movie_data, HotMovieData.class);
+        mHotMovieDatas = new Gson().fromJson(HotMovieData.movie_data.toString()+HotMovieData.movie_data2.toString(), HotMovieData.class);
         Collections.sort(mHotMovieDatas.data);
         for (int i = 0; i < 3; i++) {
             for (HotMovieData.DataBean.MovieBean movieBean : mHotMovieDatas.data.get(i).movie) {
@@ -588,11 +598,11 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                     clickMust = Integer.parseInt(movie.click_value) > clickMust ? Integer.parseInt(movie.click_value) : clickMust;
                 }
                 int color = Color.parseColor("#50888888");
-                if (clickMust > 400) {
+                if (clickMust > 10000) {
                     color = Color.parseColor("#50FF0000");
-                } else if (clickMust > 360) {
+                } else if (clickMust > 5000) {
                     color = Color.parseColor("#5000FF00");
-                } else if (clickMust > 200) {
+                } else if (clickMust > 2000) {
                     color = Color.parseColor("#500000FF");
                 }
                 LatLng latLng = new LatLng(centerLatLng.getLatitude(), centerLatLng.getLongitude());
@@ -630,25 +640,29 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
             mCityMarker = marker;
             mAMap.moveCamera(CameraUpdateFactory.newLatLngZoom(poi.getCoordinate(), 5));
             setMovieData(clickIndex);
-            ToastUtils.show(MainActivity.this, "点击了" + clickIndex + "地区 " + mHotMovieDatas.data.get(clickIndex).address_city);
         }
     }
 
     private void setMovieData(final int index) {
-        DialogListAdapter adapter = new DialogListAdapter(this, mHotMovieDatas.data.get(index));
-        mMovieList.setAdapter(adapter);
+        mAdapter = new DialogListAdapter(this, mHotMovieDatas.data.get(index));
+        mMovieList.setAdapter(mAdapter);
         if (!ImageLoader.getInstance().isInited()) {
             ImageLoader.getInstance().init(new ImageLoaderConfiguration.Builder(MainActivity.this).build());
         }
-        ImageLoader.getInstance().displayImage(mHotMovieDatas.data.get(index).movie.get(0).pic_url, mMovieImage);
+        ImageLoader.getInstance().displayImage(AMapUtil.getUriFromPath(this,mHotMovieDatas.data.get(index).movie.get(0).pic_url).toString(), mMovieImage);
+        mMovieName = mHotMovieDatas.data.get(index).movie.get(0).name;
         mMovieDescribe.setText(mHotMovieDatas.data.get(index).movie.get(0).describe);
         mMovieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ImageLoader.getInstance().displayImage(mHotMovieDatas.data.get(index).movie.get(position).pic_url, mMovieImage);
+                ImageLoader.getInstance().displayImage(AMapUtil.getUriFromPath(MainActivity.this,mHotMovieDatas.data.get(index).movie.get(position).pic_url).toString(), mMovieImage);
                 mMovieDescribe.setText(mHotMovieDatas.data.get(index).movie.get(position).describe);
+                mMovieName = mHotMovieDatas.data.get(index).movie.get(position).name;
+                mAdapter.setSelectedItem(position);
+                mAdapter.notifyDataSetChanged();
             }
         });
+        mMovieDescribe.setMovementMethod(new ScrollingMovementMethod());
     }
 
     private class LocationIndex implements View.OnClickListener {
@@ -914,10 +928,72 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     }
 
     public void onClipNameClick(View view) {
-
+        copyTextToClipboardManager(this, mMovieName);
+        ToastUtils.show(this,"视频名字已复制");
     }
 
     public void onOpenBaiduClick(View view) {
+        copyTextToClipboardManager(this, mMovieName);
+        ToastUtils.show(this,"视频名字已复制");
+        doStartApplicationWithPackageName("com.nuomi");
+    }
+    /**
+     * 将文本复制到剪切板
+     *
+     * @param content 需要复制的内容
+     */
+    public void copyTextToClipboardManager(Context context, String content) {
+        try {
+            // 得到剪贴板管理器,自API11后使用android.content.ClipboardManager
+            ClipboardManager cmb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+            cmb.setText(content);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    /**
+     * 打开其他应用
+     *
+     * @param packagename 应用的包名
+     */
+    private void doStartApplicationWithPackageName(String packagename) {
+
+        // 通过包名获取此APP详细信息，包括Activities、services、versioncode、name等等
+        PackageInfo packageinfo = null;
+        try {
+            packageinfo = getPackageManager().getPackageInfo(packagename, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (packageinfo == null) {
+            return;
+        }
+
+        // 创建一个类别为CATEGORY_LAUNCHER的该包名的Intent
+        Intent resolveIntent = new Intent(Intent.ACTION_MAIN, null);
+        resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        resolveIntent.setPackage(packageinfo.packageName);
+
+        // 通过getPackageManager()的queryIntentActivities方法遍历
+        List<ResolveInfo> resolveinfoList = getPackageManager()
+                .queryIntentActivities(resolveIntent, 0);
+
+        ResolveInfo resolveinfo = resolveinfoList.iterator().next();
+        if (resolveinfo != null) {
+            // packagename = 参数packname
+            String packageName = resolveinfo.activityInfo.packageName;
+            // 这个就是我们要找的该APP的LAUNCHER的Activity[组织形式：packagename.mainActivityname]
+            String className = resolveinfo.activityInfo.name;
+            // LAUNCHER Intent
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+
+            // 设置ComponentName参数1:packagename参数2:MainActivity路径
+            ComponentName cn = new ComponentName(packageName, className);
+
+            intent.setComponent(cn);
+            startActivity(intent);
+        }
     }
 }

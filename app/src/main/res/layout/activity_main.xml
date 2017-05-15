@@ -182,14 +182,18 @@
             android:layout_marginTop="10dp"
             android:gravity="center">
 
+            <Space
+                android:layout_width="35dp"
+                android:layout_height="wrap_content" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="3"
                 android:gravity="center"
                 android:text="视频名称"
                 android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:layout_width="0dp"
@@ -198,7 +202,7 @@
                 android:gravity="center"
                 android:text="地区"
                 android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:textSize="12dp" />
 
             <TextView
                 android:id="@+id/menu_list_movie_comment"
@@ -206,9 +210,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="点击量"
+                android:text="热度"
                 android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:textSize="12dp" />
 
         </LinearLayout>
 
@@ -496,6 +500,7 @@
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
+                android:scaleType="fitXY"
                 android:background="@color/white" />
 
             <TextView
@@ -503,8 +508,51 @@
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_margin="10dp"
+                android:scrollbars="vertical"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 android:background="@color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="视频名称"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="地区"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="热度"
+                android:textColor="@color/black"
+                android:textSize="16dp" />
         </LinearLayout>
 
         <ListView
@@ -523,7 +571,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_selector"
                 android:gravity="center"
@@ -538,7 +586,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_selector"
                 android:gravity="center"

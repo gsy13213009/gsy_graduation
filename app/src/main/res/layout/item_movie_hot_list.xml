@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -11,6 +11,7 @@
         android:id="@+id/menu_list_movie_ic"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:scaleType="fitXY"
         android:layout_margin="5dp" />
 
     <TextView

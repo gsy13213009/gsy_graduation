@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.gsy.graduation.R;
 import com.gsy.graduation.data.HotMovieData;
+import com.gsy.graduation.utils.AMapUtil;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -47,13 +48,13 @@ public class MenuListAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final MenuViewHolder holder;
         if (null == convertView) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_movie_hot_list, parent, false);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.menu_movie_hot_list, parent, false);
             holder = new MenuViewHolder(convertView);
             convertView.setTag(holder);
         } else {
             holder = (MenuViewHolder) convertView.getTag();
         }
-        holder.updateViewHolder(getItem(position));
+        holder.updateViewHolder(getItem(position), convertView);
 
         return convertView;
     }
@@ -63,6 +64,7 @@ public class MenuListAdapter extends BaseAdapter {
         private TextView movieComment;
         private TextView movieAddress;
         private ImageView mImageView;
+
         /**
          * viewHolder的构造方法，初始化view
          */
@@ -76,7 +78,7 @@ public class MenuListAdapter extends BaseAdapter {
         /**
          * 处理item的相关逻辑
          */
-        void updateViewHolder(HotMovieData.DataBean moviData) {
+        void updateViewHolder(HotMovieData.DataBean moviData, View convertView) {
             HotMovieData.DataBean.MovieBean selcetMovieBean = null;
             for (HotMovieData.DataBean.MovieBean movieBean : moviData.movie) {
                 if (selcetMovieBean == null) {
@@ -85,7 +87,8 @@ public class MenuListAdapter extends BaseAdapter {
                     selcetMovieBean = Integer.parseInt(movieBean.click_value) > Integer.parseInt(selcetMovieBean.click_value) ? movieBean : selcetMovieBean;
                 }
             }
-            ImageLoader.getInstance().displayImage(selcetMovieBean != null ? selcetMovieBean.pic_url : null,mImageView);
+            ImageLoader.getInstance().displayImage(selcetMovieBean != null ? AMapUtil.getUriFromPath(convertView.getContext()
+                    , selcetMovieBean.pic_url).toString() : null, mImageView);
             movieName.setText(selcetMovieBean != null ? selcetMovieBean.name : null);
             movieComment.setText((selcetMovieBean != null ? selcetMovieBean.click_value : null));
             movieAddress.setText(moviData.address);
