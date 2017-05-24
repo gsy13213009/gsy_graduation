@@ -27,16 +27,6 @@
         android:textSize="10dp" />
 
     <TextView
-        android:id="@+id/menu_list_movie_address"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="6.9 分"
-        android:textColor="@color/black"
-        android:textSize="10dp" />
-
-    <TextView
         android:id="@+id/menu_list_movie_comment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

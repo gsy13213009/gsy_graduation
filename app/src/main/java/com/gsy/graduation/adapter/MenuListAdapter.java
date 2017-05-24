@@ -1,6 +1,7 @@
 package com.gsy.graduation.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.gsy.graduation.R;
 import com.gsy.graduation.data.HotMovieData;
 import com.gsy.graduation.utils.AMapUtil;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -18,6 +20,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
  *
  */
 public class MenuListAdapter extends BaseAdapter {
+    private final DisplayImageOptions mHorizontalDisplayOptions;
     private Context mContext;
     private HotMovieData mHotMovieData;
 
@@ -27,16 +30,26 @@ public class MenuListAdapter extends BaseAdapter {
         if (!ImageLoader.getInstance().isInited()) {
             ImageLoader.getInstance().init(new ImageLoaderConfiguration.Builder(context).build());
         }
+        final DisplayImageOptions.Builder builder = new DisplayImageOptions.Builder()
+                .showImageOnLoading(R.color.meiyin_color_f7f7f7)
+                .showImageForEmptyUri(R.color.meiyin_color_f7f7f7)
+                .showImageOnFail(R.color.meiyin_color_f7f7f7)
+                .cacheInMemory(true)
+                .cacheOnDisk(false)
+                .bitmapConfig(Bitmap.Config.RGB_565)
+                .considerExifParams(true);
+        mHorizontalDisplayOptions = builder
+                .build();
     }
 
     @Override
     public int getCount() {
-        return mHotMovieData.data.size();
+        return mHotMovieData.menu_data.size();
     }
 
     @Override
-    public HotMovieData.DataBean getItem(int position) {
-        return mHotMovieData.data.get(position);
+    public HotMovieData.MenuData getItem(int position) {
+        return mHotMovieData.menu_data.get(position);
     }
 
     @Override
@@ -54,7 +67,7 @@ public class MenuListAdapter extends BaseAdapter {
         } else {
             holder = (MenuViewHolder) convertView.getTag();
         }
-        holder.updateViewHolder(getItem(position), convertView);
+        holder.updateViewHolder(getItem(position), convertView,mHorizontalDisplayOptions);
 
         return convertView;
     }
@@ -62,7 +75,6 @@ public class MenuListAdapter extends BaseAdapter {
     private static class MenuViewHolder {
         private TextView movieName;
         private TextView movieComment;
-        private TextView movieAddress;
         private ImageView mImageView;
 
         /**
@@ -72,27 +84,18 @@ public class MenuListAdapter extends BaseAdapter {
             mImageView = (ImageView) view.findViewById(R.id.menu_list_movie_ic);
             movieName = (TextView) view.findViewById(R.id.menu_list_movie_name);
             movieComment = (TextView) view.findViewById(R.id.menu_list_movie_comment);
-            movieAddress = (TextView) view.findViewById(R.id.menu_list_movie_address);
         }
 
         /**
          * 处理item的相关逻辑
          */
-        void updateViewHolder(HotMovieData.DataBean moviData, View convertView) {
-            HotMovieData.DataBean.MovieBean selcetMovieBean = null;
-            for (HotMovieData.DataBean.MovieBean movieBean : moviData.movie) {
-                if (selcetMovieBean == null) {
-                    selcetMovieBean = movieBean;
-                } else {
-                    selcetMovieBean = Integer.parseInt(movieBean.click_value) > Integer.parseInt(selcetMovieBean.click_value) ? movieBean : selcetMovieBean;
-                }
-            }
-            ImageLoader.getInstance().displayImage(selcetMovieBean != null ? AMapUtil.getUriFromPath(convertView.getContext()
-                    , selcetMovieBean.pic_url).toString() : null, mImageView);
-            movieName.setText(selcetMovieBean != null ? selcetMovieBean.name : null);
-            movieComment.setText((selcetMovieBean != null ? selcetMovieBean.click_value : null));
-            movieAddress.setText(moviData.address);
+        void updateViewHolder(HotMovieData.MenuData menuData, View convertView, DisplayImageOptions horizontalDisplayOptions) {
+
+            ImageLoader.getInstance().displayImage(menuData != null ? AMapUtil.getUriFromPath(convertView.getContext()
+                    , menuData.pic_url).toString() : null, mImageView, horizontalDisplayOptions);
+            movieName.setText(menuData != null ? menuData.name : null);
+            movieComment.setText((menuData != null ? menuData.click_value : null));
         }
     }
-
+    
 }

@@ -13,6 +13,8 @@ public class BaseApplication extends Application {
 
     private static Application mApplication = null;
 
+    public static boolean mIsShow = false;
+
     public static Application getApplication() {
         return mApplication;
     }

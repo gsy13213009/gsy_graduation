@@ -3,10 +3,12 @@ package com.gsy.graduation.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -16,6 +18,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.AdapterView;
@@ -43,6 +46,10 @@ import com.amap.api.services.district.DistrictItem;
 import com.amap.api.services.district.DistrictResult;
 import com.amap.api.services.district.DistrictSearch;
 import com.amap.api.services.district.DistrictSearchQuery;
+import com.amap.api.services.geocoder.GeocodeResult;
+import com.amap.api.services.geocoder.GeocodeSearch;
+import com.amap.api.services.geocoder.RegeocodeQuery;
+import com.amap.api.services.geocoder.RegeocodeResult;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.amap.api.services.route.BusRouteResult;
@@ -71,9 +78,11 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import java.util.Collections;
 import java.util.List;
 
+import static com.gsy.graduation.application.BaseApplication.mIsShow;
+
 public class MainActivity extends Activity implements View.OnClickListener, PoiSearch.OnPoiSearchListener
         , AMap.OnMarkerClickListener, RouteSearch.OnRouteSearchListener, DistrictSearch.OnDistrictSearchListener
-        , AMap.OnPOIClickListener {
+        , AMap.OnPOIClickListener, GeocodeSearch.OnGeocodeSearchListener {
 
     private static final int DURATION_SHOW_MENU = 300;
     private View mMapMenuLl;
@@ -132,7 +141,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     private Marker mCityMarker;
     private String mMovieName;
     private DialogListAdapter mAdapter;
-
+    private GeocodeSearch mGeocoderSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +154,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         initData();
         setOnclickListener();
     }
+
 
     private void setOnclickListener() {
         mMapStandard.setOnClickListener(this);
@@ -175,6 +185,9 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         setSwitch2();
         mRouteSearch = new RouteSearch(this);
         mRouteSearch.setRouteSearchListener(this);
+
+        mGeocoderSearch = new GeocodeSearch(this);
+        mGeocoderSearch.setOnGeocodeSearchListener(this);
     }
 
     private void initView() {
@@ -450,7 +463,7 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     }
 
     public void getMoviesData() {
-        mHotMovieDatas = new Gson().fromJson(HotMovieData.movie_data.toString()+HotMovieData.movie_data2.toString(), HotMovieData.class);
+        mHotMovieDatas = new Gson().fromJson(HotMovieData.movie_data.toString() + HotMovieData.movie_data2.toString(), HotMovieData.class);
         Collections.sort(mHotMovieDatas.data);
         for (int i = 0; i < 3; i++) {
             for (HotMovieData.DataBean.MovieBean movieBean : mHotMovieDatas.data.get(i).movie) {
@@ -611,8 +624,9 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
                         .fillColor(color).strokeWidth(25));
             }
         } else {
-            if (districtResult.getAMapException() != null)
+            if (districtResult.getAMapException() != null) {
                 ToastUtils.showerror(this.getApplicationContext(), districtResult.getAMapException().getErrorCode());
+            }
         }
 
     }
@@ -649,13 +663,13 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
         if (!ImageLoader.getInstance().isInited()) {
             ImageLoader.getInstance().init(new ImageLoaderConfiguration.Builder(MainActivity.this).build());
         }
-        ImageLoader.getInstance().displayImage(AMapUtil.getUriFromPath(this,mHotMovieDatas.data.get(index).movie.get(0).pic_url).toString(), mMovieImage);
+        ImageLoader.getInstance().displayImage(AMapUtil.getUriFromPath(this, mHotMovieDatas.data.get(index).movie.get(0).pic_url).toString(), mMovieImage);
         mMovieName = mHotMovieDatas.data.get(index).movie.get(0).name;
         mMovieDescribe.setText(mHotMovieDatas.data.get(index).movie.get(0).describe);
         mMovieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ImageLoader.getInstance().displayImage(AMapUtil.getUriFromPath(MainActivity.this,mHotMovieDatas.data.get(index).movie.get(position).pic_url).toString(), mMovieImage);
+                ImageLoader.getInstance().displayImage(AMapUtil.getUriFromPath(MainActivity.this, mHotMovieDatas.data.get(index).movie.get(position).pic_url).toString(), mMovieImage);
                 mMovieDescribe.setText(mHotMovieDatas.data.get(index).movie.get(position).describe);
                 mMovieName = mHotMovieDatas.data.get(index).movie.get(position).name;
                 mAdapter.setSelectedItem(position);
@@ -701,7 +715,19 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
             mAMap.moveCamera(CameraUpdateFactory.zoomTo(zoomLevel));
             mStartPoint = new LatLonPoint(mAMap.getCameraPosition().target.latitude, mAMap.getCameraPosition().target.longitude);
             Log.d("gsy", "[" + "] " + "startPoint:" + mStartPoint.getLatitude() + "  " + mStartPoint.getLongitude());
+            if (!mIsShow) {
+                showRecommend();
+                mIsShow = true;
+            }
         }
+    }
+
+    /**
+     * 显示用户推荐
+     */
+    private void showRecommend() {
+        RegeocodeQuery query = new RegeocodeQuery(mStartPoint, 200,GeocodeSearch.AMAP);
+        mGeocoderSearch.getFromLocationAsyn(query);
     }
 
     /**
@@ -775,8 +801,9 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
      * 显示进度框
      */
     private void showProgressDialog() {
-        if (mProgressDialog == null)
+        if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
+        }
         mProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mProgressDialog.setIndeterminate(false);
         mProgressDialog.setCancelable(true);
@@ -929,14 +956,15 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
 
     public void onClipNameClick(View view) {
         copyTextToClipboardManager(this, mMovieName);
-        ToastUtils.show(this,"视频名字已复制");
+        ToastUtils.show(this, "视频名字已复制");
     }
 
     public void onOpenBaiduClick(View view) {
         copyTextToClipboardManager(this, mMovieName);
-        ToastUtils.show(this,"视频名字已复制");
+        ToastUtils.show(this, "视频名字已复制");
         doStartApplicationWithPackageName("com.nuomi");
     }
+
     /**
      * 将文本复制到剪切板
      *
@@ -995,5 +1023,46 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
             intent.setComponent(cn);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setOnCancelListener(null)
+                    .setTitle("提醒")
+                    .setMessage("是否退出")
+                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    }).setNegativeButton("取消", null);
+            builder.show();//显示对话框
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    @Override
+    public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
+        String address = regeocodeResult.getRegeocodeAddress().getFormatAddress();
+        int index = -1;
+        for (int j = 0; j < mHotMovieDatas.data.size(); j++) {
+            if (address.contains(mHotMovieDatas.data.get(j).address_city)) {
+                index = j;
+                break;
+            }
+        }
+        if (index != -1) {
+            setMovieData(index);
+            setMovieDialogVisibility(true);
+        }
+    }
+
+    @Override
+    public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
+
     }
 }

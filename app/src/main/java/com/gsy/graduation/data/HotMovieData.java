@@ -8,6 +8,14 @@ import java.util.List;
 public class HotMovieData {
 
     public List<DataBean> data;
+    public List<MenuData> menu_data;
+
+    public static class MenuData {
+
+        public String pic_url;
+        public String click_value;
+        public String name;
+    }
 
     public static class DataBean implements Comparable<DataBean> {
 
@@ -53,35 +61,137 @@ public class HotMovieData {
 
 
     public static StringBuilder movie_data  = new StringBuilder("{\n" +
+            "  \"menu_data\" : [\n" +
+            "    {\n" +
+            "      \"name\" : \"泡沫之夏(第04集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "      \"click_value\" : \"6779\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"功夫梦(抢先版)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
+            "      \"click_value\" : \"6734\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"谈情说案(第01集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "      \"click_value\" : \"5947\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"谈情说案(第21集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "      \"click_value\" : \"3971\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"泡沫之夏(第01集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "      \"click_value\" : \"3953\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"谈情说案(第22集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "      \"click_value\" : \"3551\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"游戏小道花边\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
+            "      \"click_value\" : \"2959\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"泡沫之夏(第03集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "      \"click_value\" : \"2763\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"波斯王子：时之刃\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/bosiwangzi.jpg\",\n" +
+            "      \"click_value\" : \"2650\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"宫心计国语版(第33集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongxinji.jpeg\",\n" +
+            "      \"click_value\" : \"2464\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"泡沫之夏(第02集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "      \"click_value\" : \"2276\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"新三国(第95集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/xinsanguo.jpeg\",\n" +
+            "      \"click_value\" : \"2250\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"新三国(第1集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/xinsanguo.jpeg\",\n" +
+            "      \"click_value\" : \"2195\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"谈情说案(第20集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "      \"click_value\" : \"2175\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"康熙来了\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/kanxilaile.jpeg\",\n" +
+            "      \"click_value\" : \"2014\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"快乐大本营\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/kuailedabenying.jpeg\",\n" +
+            "      \"click_value\" : \"1923\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"谈情说案(第23集).mp4\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "      \"click_value\" : \"1912\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"宫心计国语版(第01集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongxinji.jpeg\",\n" +
+            "      \"click_value\" : \"1798\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"蒲松龄(第01集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/pusongling.jpeg\",\n" +
+            "      \"click_value\" : \"1614\"\n" +
+            "    },\n" +
+            "\t{\n" +
+            "      \"name\" : \"新三国(第37集)\",\n" +
+            "      \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/xinsanguo.jpeg\",\n" +
+            "      \"click_value\" : \"1537\"\n" +
+            "    }\n" +
+            "  ],\n" +
             "  \"data\" : [\n" +
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"7580\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "          \"name\" : \"泡沫之夏(第03集)\",\n" +
+            "          \"click_value\" : \"2602\",\n" +
+            "          \"describe\" : \"小澄反对夏沫进入演艺圈。欧辰则依然在为梦中的神秘女孩而苦恼着，他在潜意识中认为歌手尹夏沫就是他的这位梦中人。有了洛熙的支持和鼓励，夏沫很快就适应了舞台角色。当欧辰再次见到了夏沫，却发现她和洛熙的关系非比寻常，对此非常气愤。借虹欧拍摄广告的契机，欧辰再一次与夏沫相遇，这股强烈的熟悉感再一次拼接起了他的记忆碎片，面对已经失忆的欧辰，夏沫并没有告诉他自己的身份\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/bosiwangzi.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/bosiwangzi.jpg\",\n" +
             "          \"name\" : \"波斯王子：时之刃(清晰版)\",\n" +
             "          \"click_value\" : \"2668\",\n" +
             "          \"describe\" : \"电影《波斯王子：时之刃》取材于同名游戏，并以游戏版为蓝本改编而成，讲述波斯帝国时代，随军出征的波斯王子达斯坦在战利品中发现一把魔法匕首，国王的弟弟尼扎姆为据有这件宝物，杀死国王并嫁祸达斯坦，达斯坦被迫亡命天涯，最终与塔米娜公主联手，克服重重艰难险阻，将时之刃送回护宝神庙的冒险故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"3662\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"6337\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"6024\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -93,31 +203,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"4713\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "          \"name\" : \"泡沫之夏(第03集)\",\n" +
+            "          \"click_value\" : \"1667\",\n" +
+            "          \"describe\" : \"小澄反对夏沫进入演艺圈。欧辰则依然在为梦中的神秘女孩而苦恼着，他在潜意识中认为歌手尹夏沫就是他的这位梦中人。有了洛熙的支持和鼓励，夏沫很快就适应了舞台角色。当欧辰再次见到了夏沫，却发现她和洛熙的关系非比寻常，对此非常气愤。借虹欧拍摄广告的契机，欧辰再一次与夏沫相遇，这股强烈的熟悉感再一次拼接起了他的记忆碎片，面对已经失忆的欧辰，夏沫并没有告诉他自己的身份\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"2152\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"2344\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"4111\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"3689\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -129,31 +239,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"9699\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "          \"name\" : \"泡沫之夏(第03集)\",\n" +
+            "          \"click_value\" : \"3491\",\n" +
+            "          \"describe\" : \"小澄反对夏沫进入演艺圈。欧辰则依然在为梦中的神秘女孩而苦恼着，他在潜意识中认为歌手尹夏沫就是他的这位梦中人。有了洛熙的支持和鼓励，夏沫很快就适应了舞台角色。当欧辰再次见到了夏沫，却发现她和洛熙的关系非比寻常，对此非常气愤。借虹欧拍摄广告的契机，欧辰再一次与夏沫相遇，这股强烈的熟悉感再一次拼接起了他的记忆碎片，面对已经失忆的欧辰，夏沫并没有告诉他自己的身份\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"4992\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"5181\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"8554\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"7368\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -165,31 +275,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"15126\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongxinji.jpeg\",\n" +
+            "          \"name\" : \"宫心计国语版(第33集)\",\n" +
+            "          \"click_value\" : \"5192\",\n" +
+            "          \"describe\" : \"刘三好和姚金铃是宫中的一对金兰姊妹，两人同为小宫女，备受差遣。当时后宫有四司把持，分别为负责美食的司膳谭艳裳，刺绣华裳的司制钟雪霞，掌管陈设的司设胡素恩及主理首\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第03集)\",\n" +
             "          \"click_value\" : \"5369\",\n" +
             "          \"describe\" : \"小澄反对夏沫进入演艺圈。欧辰则依然在为梦中的神秘女孩而苦恼着，他在潜意识中认为歌手尹夏沫就是他的这位梦中人。有了洛熙的支持和鼓励，夏沫很快就适应了舞台角色。当欧辰再次见到了夏沫，却发现她和洛熙的关系非比寻常，对此非常气愤。借虹欧拍摄广告的契机，欧辰再一次与夏沫相遇，这股强烈的熟悉感再一次拼接起了他的记忆碎片，面对已经失忆的欧辰，夏沫并没有告诉他自己的身份\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"7987\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"12302\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"12430\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -201,31 +311,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"8229\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongxinji.jpeg\",\n" +
+            "          \"name\" : \"宫心计国语版(第33集)\",\n" +
+            "          \"click_value\" : \"3422\",\n" +
+            "          \"describe\" : \"刘三好和姚金铃是宫中的一对金兰姊妹，两人同为小宫女，备受差遣。当时后宫有四司把持，分别为负责美食的司膳谭艳裳，刺绣华裳的司制钟雪霞，掌管陈设的司设胡素恩及主理首\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"5518\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第03集)\",\n" +
             "          \"click_value\" : \"3818\",\n" +
             "          \"describe\" : \"小澄反对夏沫进入演艺圈。欧辰则依然在为梦中的神秘女孩而苦恼着，他在潜意识中认为歌手尹夏沫就是他的这位梦中人。有了洛熙的支持和鼓励，夏沫很快就适应了舞台角色。当欧辰再次见到了夏沫，却发现她和洛熙的关系非比寻常，对此非常气愤。借虹欧拍摄广告的契机，欧辰再一次与夏沫相遇，这股强烈的熟悉感再一次拼接起了他的记忆碎片，面对已经失忆的欧辰，夏沫并没有告诉他自己的身份\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"8464\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"7878\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -237,31 +347,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"470\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "          \"name\" : \"泡沫之夏(第01集)\",\n" +
+            "          \"click_value\" : \"165\",\n" +
+            "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
             "          \"name\" : \"游戏小道花边\",\n" +
             "          \"click_value\" : \"210\",\n" +
             "          \"describe\" : \"暂无简介\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongxinji.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongxinji.jpeg\",\n" +
             "          \"name\" : \"宫心计国语版(第33集)\",\n" +
             "          \"click_value\" : \"178\",\n" +
             "          \"describe\" : \"刘三好和姚金铃是宫中的一对金兰姊妹，两人同为小宫女，备受差遣。当时后宫有四司把持，分别为负责美食的司膳谭艳裳，刺绣华裳的司制钟雪霞，掌管陈设的司设胡素恩及主理首\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"284\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"466\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -273,31 +383,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"29893\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"name\" : \"游戏小道花边\",\n" +
+            "          \"click_value\" : \"8341\",\n" +
+            "          \"describe\" : \"暂无简介\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"12230\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第03集)\",\n" +
             "          \"click_value\" : \"8392\",\n" +
             "          \"describe\" : \"小澄反对夏沫进入演艺圈。欧辰则依然在为梦中的神秘女孩而苦恼着，他在潜意识中认为歌手尹夏沫就是他的这位梦中人。有了洛熙的支持和鼓励，夏沫很快就适应了舞台角色。当欧辰再次见到了夏沫，却发现她和洛熙的关系非比寻常，对此非常气愤。借虹欧拍摄广告的契机，欧辰再一次与夏沫相遇，这股强烈的熟悉感再一次拼接起了他的记忆碎片，面对已经失忆的欧辰，夏沫并没有告诉他自己的身份\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"20924\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"27744\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -309,31 +419,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"21252\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "          \"name\" : \"泡沫之夏(第02集)\",\n" +
+            "          \"click_value\" : \"7858\",\n" +
+            "          \"describe\" : \"没有专长的夏沫，不被人看好。却与潘楠成为朋友。洛熙如约来参加新人的培训活动，时隔五年初次相遇的夏沫心中百感交集。夏沫和洛熙的谈话使夏沫意识到对于当年把洛熙送出国这件事直到现在他依然耿耿于怀。但经过一番交谈后，两人间的隔阂慢慢减淡。为了帮助夏沫在新人选拔上取得成功，洛熙取消了自己周末的所有通告。擂台上，夏沫倾情的演唱着《钻石》。正在此时，欧辰看到夏沫，他顿然觉得仿佛见到梦中的那个女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第03集)\",\n" +
             "          \"click_value\" : \"9702\",\n" +
             "          \"describe\" : \"小澄反对夏沫进入演艺圈。欧辰则依然在为梦中的神秘女孩而苦恼着，他在潜意识中认为歌手尹夏沫就是他的这位梦中人。有了洛熙的支持和鼓励，夏沫很快就适应了舞台角色。当欧辰再次见到了夏沫，却发现她和洛熙的关系非比寻常，对此非常气愤。借虹欧拍摄广告的契机，欧辰再一次与夏沫相遇，这股强烈的熟悉感再一次拼接起了他的记忆碎片，面对已经失忆的欧辰，夏沫并没有告诉他自己的身份\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"13326\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"22799\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"21125\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -345,31 +455,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"17821\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第21集)\",\n" +
+            "          \"click_value\" : \"7969\",\n" +
+            "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"11883\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"8874\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"15520\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"14006\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -381,31 +491,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"6140\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongxinji.jpeg\",\n" +
+            "          \"name\" : \"宫心计国语版(第33集)\",\n" +
+            "          \"click_value\" : \"2693\",\n" +
+            "          \"describe\" : \"刘三好和姚金铃是宫中的一对金兰姊妹，两人同为小宫女，备受差遣。当时后宫有四司把持，分别为负责美食的司膳谭艳裳，刺绣华裳的司制钟雪霞，掌管陈设的司设胡素恩及主理首\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"5345\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"5335\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
             "          \"name\" : \"游戏小道花边\",\n" +
             "          \"click_value\" : \"3158\",\n" +
             "          \"describe\" : \"暂无简介\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"2990\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
@@ -417,31 +527,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"10969\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第22集)\",\n" +
+            "          \"click_value\" : \"7751\",\n" +
+            "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"12775\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"8517\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"12038\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"9738\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -453,31 +563,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"6005\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第22集)\",\n" +
+            "          \"click_value\" : \"4312\",\n" +
+            "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"6131\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"6901\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"6985\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"4959\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
@@ -489,31 +599,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"4134\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第22集)\",\n" +
+            "          \"click_value\" : \"2337\",\n" +
+            "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"3779\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"2606\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"4069\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"3998\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -525,69 +635,69 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"6240\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第22集)\",\n" +
+            "          \"click_value\" : \"3942\",\n" +
+            "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"6901\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"4494\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"6236\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"5714\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
-            "        }");
-
-    public static  StringBuilder movie_data2 = new StringBuilder("\n" +
+            "        }\n" +
             "      ],\n" +
             "      \"address\" : \"湖南\",\n" +
             "      \"address_city\" : \"长沙市\"\n" +
-            "    },\n" +
+            "    }");
+
+    public static  StringBuilder movie_data2 = new StringBuilder(",\n" +
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"9284\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第22集)\",\n" +
+            "          \"click_value\" : \"5882\",\n" +
+            "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"9908\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"6675\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"8971\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"7685\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -599,31 +709,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"21781\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
+            "          \"name\" : \"功夫梦(抢先版)\",\n" +
+            "          \"click_value\" : \"21009\",\n" +
+            "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"56597\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"38001\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第22集)\",\n" +
             "          \"click_value\" : \"34959\",\n" +
             "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第20集)\",\n" +
             "          \"click_value\" : \"21863\",\n" +
             "          \"describe\" : \"Karen与Simon出游时再次发现丈夫跟踪自己，他们向重案组报告此事但依旧无法证实Stanley有嫌疑；Karen发现Simon失踪，重案组在医院弃置房内发现Simon的内脏后认定Stanley有重大作案嫌疑，为了保护Karen的安全安排她暂时住在警方的安全屋中，但Stanley依旧找机会机会掳走了Karen。在Stanley决定要把Karen杀死制成标本前景博查出了Karen所在并顺利将其营救。事件了结后的庆功宴当天小丽却意外患上感冒。\"\n" +
@@ -635,31 +745,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"1169\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第22集)\",\n" +
+            "          \"click_value\" : \"871\",\n" +
+            "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"1490\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"915\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"1042\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"1251\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -671,31 +781,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"1925\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/xinsanguo.jpg\",\n" +
+            "          \"name\" : \"新三国(第95集)\",\n" +
+            "          \"click_value\" : \"710\",\n" +
+            "          \"describe\" : \"许昌大殿，曹睿身体日益衰微。司马懿觐见，曹睿任命其为太尉，彻底消其兵权。司马府中，静姝与司马懿互诉衷肠。司马懿决定与之成亲，静姝感动万分。病中的曹睿召司马懿进宫，假意将摄政大权交付于他，以测其用心。司马懿推辞不受，并主动要求辞去所有官职，并将雍凉旧将削官去职以打消曹爽的猜疑。不久，曹睿薨，其子曹芳登基即位。司马府中，静姝难产而亡，情痛之余，司马懿中风病发。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"1692\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"1156\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
             "          \"name\" : \"游戏小道花边\",\n" +
             "          \"click_value\" : \"897\",\n" +
             "          \"describe\" : \"暂无简介\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/bosiwangzi.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/bosiwangzi.jpg\",\n" +
             "          \"name\" : \"波斯王子：时之刃(清晰版)\",\n" +
             "          \"click_value\" : \"776\",\n" +
             "          \"describe\" : \"电影《波斯王子：时之刃》取材于同名游戏，并以游戏版为蓝本改编而成，讲述波斯帝国时代，随军出征的波斯王子达斯坦在战利品中发现一把魔法匕首，国王的弟弟尼扎姆为据有这件宝物，杀死国王并嫁祸达斯坦，达斯坦被迫亡命天涯，最终与塔米娜公主联手，克服重重艰难险阻，将时之刃送回护宝神庙的冒险故事。\"\n" +
@@ -707,31 +817,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"7990\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongxinji.jpeg\",\n" +
+            "          \"name\" : \"宫心计国语版(第33集)\",\n" +
+            "          \"click_value\" : \"3283\",\n" +
+            "          \"describe\" : \"刘三好和姚金铃是宫中的一对金兰姊妹，两人同为小宫女，备受差遣。当时后宫有四司把持，分别为负责美食的司膳谭艳裳，刺绣华裳的司制钟雪霞，掌管陈设的司设胡素恩及主理首\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"4298\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
             "          \"name\" : \"游戏小道花边\",\n" +
             "          \"click_value\" : \"3473\",\n" +
             "          \"describe\" : \"暂无简介\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"7962\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"7233\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -743,31 +853,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"9887\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第22集)\",\n" +
+            "          \"click_value\" : \"5968\",\n" +
+            "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"10777\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"6975\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"9369\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"8065\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -779,31 +889,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"2314\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第21集)\",\n" +
+            "          \"click_value\" : \"1291\",\n" +
+            "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"1744\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
             "          \"name\" : \"游戏小道花边\",\n" +
             "          \"click_value\" : \"1359\",\n" +
             "          \"describe\" : \"暂无简介\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"1722\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"2159\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -815,31 +925,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"3682\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "          \"name\" : \"泡沫之夏(第01集)\",\n" +
+            "          \"click_value\" : \"1745\",\n" +
+            "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"2295\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
             "          \"name\" : \"游戏小道花边\",\n" +
             "          \"click_value\" : \"2096\",\n" +
             "          \"describe\" : \"暂无简介\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"2978\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"3246\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -851,31 +961,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"4861\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第20集)\",\n" +
+            "          \"click_value\" : \"3780\",\n" +
+            "          \"describe\" : \"Karen与Simon出游时再次发现丈夫跟踪自己，他们向重案组报告此事但依旧无法证实Stanley有嫌疑；Karen发现Simon失踪，重案组在医院弃置房内发现Simon的内脏后认定Stanley有重大作案嫌疑，为了保护Karen的安全安排她暂时住在警方的安全屋中，但Stanley依旧找机会机会掳走了Karen。在Stanley决定要把Karen杀死制成标本前景博查出了Karen所在并顺利将其营救。事件了结后的庆功宴当天小丽却意外患上感冒。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"9925\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"6818\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第22集)\",\n" +
             "          \"click_value\" : \"6057\",\n" +
             "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"4664\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -887,31 +997,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"1042\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/xinsanguo.jpg\",\n" +
+            "          \"name\" : \"新三国(第95集)\",\n" +
+            "          \"click_value\" : \"320\",\n" +
+            "          \"describe\" : \"许昌大殿，曹睿身体日益衰微。司马懿觐见，曹睿任命其为太尉，彻底消其兵权。司马府中，静姝与司马懿互诉衷肠。司马懿决定与之成亲，静姝感动万分。病中的曹睿召司马懿进宫，假意将摄政大权交付于他，以测其用心。司马懿推辞不受，并主动要求辞去所有官职，并将雍凉旧将削官去职以打消曹爽的猜疑。不久，曹睿薨，其子曹芳登基即位。司马府中，静姝难产而亡，情痛之余，司马懿中风病发。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
             "          \"name\" : \"游戏小道花边\",\n" +
             "          \"click_value\" : \"374\",\n" +
             "          \"describe\" : \"暂无简介\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"393\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"656\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"934\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -923,31 +1033,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"212\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongxinji.jpeg\",\n" +
+            "          \"name\" : \"宫心计国语版(第33集)\",\n" +
+            "          \"click_value\" : \"67\",\n" +
+            "          \"describe\" : \"刘三好和姚金铃是宫中的一对金兰姊妹，两人同为小宫女，备受差遣。当时后宫有四司把持，分别为负责美食的司膳谭艳裳，刺绣华裳的司制钟雪霞，掌管陈设的司设胡素恩及主理首\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/bosiwangzi.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/bosiwangzi.jpg\",\n" +
             "          \"name\" : \"波斯王子：时之刃(清晰版)\",\n" +
             "          \"click_value\" : \"68\",\n" +
             "          \"describe\" : \"电影《波斯王子：时之刃》取材于同名游戏，并以游戏版为蓝本改编而成，讲述波斯帝国时代，随军出征的波斯王子达斯坦在战利品中发现一把魔法匕首，国王的弟弟尼扎姆为据有这件宝物，杀死国王并嫁祸达斯坦，达斯坦被迫亡命天涯，最终与塔米娜公主联手，克服重重艰难险阻，将时之刃送回护宝神庙的冒险故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
             "          \"name\" : \"游戏小道花边\",\n" +
             "          \"click_value\" : \"107\",\n" +
             "          \"describe\" : \"暂无简介\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"72\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"177\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -959,31 +1069,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"1998\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
+            "          \"name\" : \"泡沫之夏(第03集)\",\n" +
+            "          \"click_value\" : \"644\",\n" +
+            "          \"describe\" : \"小澄反对夏沫进入演艺圈。欧辰则依然在为梦中的神秘女孩而苦恼着，他在潜意识中认为歌手尹夏沫就是他的这位梦中人。有了洛熙的支持和鼓励，夏沫很快就适应了舞台角色。当欧辰再次见到了夏沫，却发现她和洛熙的关系非比寻常，对此非常气愤。借虹欧拍摄广告的契机，欧辰再一次与夏沫相遇，这股强烈的熟悉感再一次拼接起了他的记忆碎片，面对已经失忆的欧辰，夏沫并没有告诉他自己的身份\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
             "          \"name\" : \"游戏小道花边\",\n" +
             "          \"click_value\" : \"653\",\n" +
             "          \"describe\" : \"暂无简介\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"928\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"1524\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"1869\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -995,31 +1105,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"6685\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/bosiwangzi.jpg\",\n" +
+            "          \"name\" : \"波斯王子：时之刃(清晰版)\",\n" +
+            "          \"click_value\" : \"2685\",\n" +
+            "          \"describe\" : \"电影《波斯王子：时之刃》取材于同名游戏，并以游戏版为蓝本改编而成，讲述波斯帝国时代，随军出征的波斯王子达斯坦在战利品中发现一把魔法匕首，国王的弟弟尼扎姆为据有这件宝物，杀死国王并嫁祸达斯坦，达斯坦被迫亡命天涯，最终与塔米娜公主联手，克服重重艰难险阻，将时之刃送回护宝神庙的冒险故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"5283\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"5331\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"3331\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"3141\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
@@ -1031,31 +1141,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"5829\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/bosiwangzi.jpg\",\n" +
+            "          \"name\" : \"波斯王子：时之刃(清晰版)\",\n" +
+            "          \"click_value\" : \"1984\",\n" +
+            "          \"describe\" : \"电影《波斯王子：时之刃》取材于同名游戏，并以游戏版为蓝本改编而成，讲述波斯帝国时代，随军出征的波斯王子达斯坦在战利品中发现一把魔法匕首，国王的弟弟尼扎姆为据有这件宝物，杀死国王并嫁祸达斯坦，达斯坦被迫亡命天涯，最终与塔米娜公主联手，克服重重艰难险阻，将时之刃送回护宝神庙的冒险故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"2313\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第01集)\",\n" +
             "          \"click_value\" : \"2561\",\n" +
             "          \"describe\" : \"欧辰是提供夏沫养父工作的富家少爷，而洛熙则是被收养的孤儿，因为夏沫的关系，三人引发了一连串的变故。五年后，洛熙以当红歌手的身份再次回到台北。此时的夏沫也找到了一份演员助理的工作。回到家中，夏沫是个尽职尽责的好姐姐，对于生病的弟弟小澄倾尽照顾与关爱。失忆的富家公子欧辰，一直努力的回忆着梦中留给他绿色蕾丝的女孩。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"4233\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"4109\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
@@ -1067,31 +1177,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"6138\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
+            "          \"name\" : \"功夫梦(抢先版)\",\n" +
+            "          \"click_value\" : \"3633\",\n" +
+            "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"6846\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"4887\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"4417\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第22集)\",\n" +
             "          \"click_value\" : \"4255\",\n" +
             "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
@@ -1103,31 +1213,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"3585\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
+            "          \"name\" : \"谈情说案(第22集)\",\n" +
+            "          \"click_value\" : \"2177\",\n" +
+            "          \"describe\" : \"小丽与上司一起到捐款的慈善基金商量筹办活动的细节，想不到该基金的管理人就是宝儿；宝儿故意作弄小丽更不断为难她。天恒发现Adrian与敏嘉闹分手后找到独自疗伤的敏嘉并借机向敏嘉求婚，两人重修旧好。准备结婚的天恒与敏嘉打得火热，敏嘉隔天驻留澳门工作，独自在家的天恒收到好友邀约出外喝酒，有女性主动接近天恒更向他投怀送抱，而醉得一塌胡涂的天恒竟把她带回家。敏嘉突然自澳门回家，发现天恒偷情一事后大为受伤。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"2994\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"3198\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第01集)\",\n" +
             "          \"click_value\" : \"3971\",\n" +
             "          \"describe\" : \"民国初年的香港，徐警长在西餐厅与在洋行工作的景氏成功捉拿贼人，失主Robinson遂送他们各人一幅油画纪念，两人却互感不屑。如今徐警长的后代徐小丽亦立志做一个好警察，受女警司古玉娇欣赏小丽被调入重案组。她初到重案组即与组员一同顺利拘捕犯人为组员留下好印象，协助警队提供物理数据的新教授是小丽上司天恒多年的好友景博，而景博正是当年与徐警长一同捉贼的景氏后代。小丽调查凶杀案再遇难题，在众人茫无头绪之际小丽发现重要线索。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/tanqingshuoan.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/tanqingshuoan.jpg\",\n" +
             "          \"name\" : \"谈情说案(第21集)\",\n" +
             "          \"click_value\" : \"2660\",\n" +
             "          \"describe\" : \"玉娇接受了小丽的调职申请，更要小丽借此机会让自己调节情绪。景致在慈善机构晚宴上偶然认识到豪门第二代的宝儿并对她印象甚好，她约了景博一起饭聚制造机会给宝儿与景博相处。天恒对敏嘉发动追求攻势可惜敏嘉毫不领情，而敏嘉也再次发现男友偷情的事实。宝儿说出自己对景博的仰慕，但景博表示自己难忘旧情。高兆天因受勒索而报警，重案组众人得悉歹徒的犯案手法后，计划在他取赎款时逮捕他却不料反被罪犯袭击。\"\n" +
@@ -1139,31 +1249,31 @@ public class HotMovieData {
             "    {\n" +
             "      \"movie\" : [\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/renshouzajiao.jpg\",\n" +
-            "          \"name\" : \"人兽杂交\",\n" +
-            "          \"click_value\" : \"1214\",\n" +
-            "          \"describe\" : \"《人兽杂交》是由高蒙电影公司等公司制作、文森佐·纳塔利执导，阿德里安·布洛迪和萨拉·波莉等主演的R级科幻惊悚片。影片于2009年10月6日在西班牙上映。该片讲述了两位科学家因为制造出一只人兽杂交的怪物而酿成了悲剧的故事。\"\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/bosiwangzi.jpg\",\n" +
+            "          \"name\" : \"波斯王子：时之刃(清晰版)\",\n" +
+            "          \"click_value\" : \"454\",\n" +
+            "          \"describe\" : \"电影《波斯王子：时之刃》取材于同名游戏，并以游戏版为蓝本改编而成，讲述波斯帝国时代，随军出征的波斯王子达斯坦在战利品中发现一把魔法匕首，国王的弟弟尼扎姆为据有这件宝物，杀死国王并嫁祸达斯坦，达斯坦被迫亡命天涯，最终与塔米娜公主联手，克服重重艰难险阻，将时之刃送回护宝神庙的冒险故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongfumeng.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongfumeng.jpg\",\n" +
             "          \"name\" : \"功夫梦(抢先版)\",\n" +
             "          \"click_value\" : \"1110\",\n" +
             "          \"describe\" : \"《功夫梦》是2010年由哥伦比亚影业公司出品，由哈罗德·兹瓦特执导，成龙、贾登·史密斯主演的一部动作电影。电影翻拍自1984年的好莱坞电影《龙威小子》，但把整个故事发生的环境搬到了中国。电影讲述了一名饱受欺凌的小孩Parker跟随修理工韩先生（成龙饰）学习武术，并在武术大赛中打败对手夺冠的故事。\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/paomozhixia.jpg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/paomozhixia.jpg\",\n" +
             "          \"name\" : \"泡沫之夏(第04集)\",\n" +
             "          \"click_value\" : \"798\",\n" +
             "          \"describe\" : \"夏沫把欧辰失忆的事情告诉了洛熙。回想起小时候洛熙和夏沫还有小澄都是被尹伯伯收养后，才摆脱了在孤儿院长大的经历。夏沫告诉了洛熙出国在机场准备离开那一刻，他们的养父母就出车祸了，洛熙后悔不已，更加憎恨了欧辰。夏沫取得了虹欧公司夏季彩妆代言的试镜资格，不料参赛路上却遭人绑架，欧辰得知夏沫被人硬拉上车的消息后，到处寻找夏沫的下落，在一个废弃的工厂门口发现可疑的人物，便与他们打了起来\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/gongxinji.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/gongxinji.jpeg\",\n" +
             "          \"name\" : \"宫心计国语版(第33集)\",\n" +
             "          \"click_value\" : \"687\",\n" +
             "          \"describe\" : \"刘三好和姚金铃是宫中的一对金兰姊妹，两人同为小宫女，备受差遣。当时后宫有四司把持，分别为负责美食的司膳谭艳裳，刺绣华裳的司制钟雪霞，掌管陈设的司设胡素恩及主理首\"\n" +
             "        },\n" +
             "        {\n" +
-            "          \"pic_url\" : \"/storage/emulated/0/Tencent/QQfile_recv/youxixiaodaohuabian.jpeg\",\n" +
+            "          \"pic_url\" : \"\\/storage\\/emulated\\/0\\/Tencent\\/QQfile_recv\\/youxixiaodaohuabian.jpeg\",\n" +
             "          \"name\" : \"游戏小道花边\",\n" +
             "          \"click_value\" : \"869\",\n" +
             "          \"describe\" : \"暂无简介\"\n" +

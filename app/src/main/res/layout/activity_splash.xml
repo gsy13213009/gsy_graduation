@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="土豆版"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:textSize="25sp" />
 
     <ProgressBar

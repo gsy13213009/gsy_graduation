@@ -135,8 +135,8 @@ public class GuideActivity extends Activity
     private void initData() {
         // viewpaper adapter list
         // 图片的数据
-        int[] pics = new int[] { R.drawable.guide_1, R.drawable.guide_2,
-                R.drawable.guide_3 };
+        int[] pics = new int[] { R.drawable.main_dinwei_yindao, R.drawable.map_mode, R.drawable.main_caidan_yindao,
+                R.drawable.fujinyingyuan_yindao, R.drawable.relitu_yindao};
 
         // 定义Viewpager使用的容器
 
