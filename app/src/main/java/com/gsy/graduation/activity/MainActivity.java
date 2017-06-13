@@ -311,11 +311,11 @@ public class MainActivity extends Activity implements View.OnClickListener, PoiS
     }
 
     /**
-     * 设置地图模式的显示和隐藏
      *
      * @param visible true 显示，false 隐藏
      */
     private void setSelectRouteVisibility(boolean visible) {
+        mBottomLayout.setVisibility(View.GONE);
         mSelectRoute.animate()
                 .translationY(visible ? 0 : -DeviceUtils.dip2px(100))
                 .setDuration(DURATION_SHOW_MENU)

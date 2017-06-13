@@ -20,6 +20,7 @@ import com.amap.api.services.route.RouteBusLineItem;
 import com.amap.api.services.route.RouteRailwayItem;
 import com.gsy.graduation.R;
 
+import java.io.File;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -279,6 +280,7 @@ public class AMapUtil {
      * @return 图片的Uri
      */
     public static Uri getUriFromPath(Context context, String imagePath) {
+        if (!new File(imagePath).exists()) return null;
         Uri mediaUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
         Cursor cursor = context.getContentResolver().query(mediaUri,
                 null,
